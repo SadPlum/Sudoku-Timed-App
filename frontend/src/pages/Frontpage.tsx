@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Frontpage() {
-  return (
-    <div>Frontpage</div>
-  )
+  return <main className="frontpage">body</main>;
 }
 
-export default Frontpage
+export default Frontpage;
