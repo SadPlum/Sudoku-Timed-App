@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
 
-function Scores() {
-  return (
-    <div>Scores</div>
-  )
+interface props {
+  name: string;
+  time: number;
 }
 
-export default Scores
+const Scores: React.FC<props> = ({ name, time }) => {
+  return (
+    <section className="scores">
+      <span className="name">{name}</span>
+      <span className="time">{time}</span>
+    </section>
+  );
+};
+
+export default Scores;

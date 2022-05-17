@@ -1,13 +1,18 @@
-import React from 'react'
-
+import React from "react";
+import Scores from "./Scores";
 
 interface props {
-    scores? : {name:string, time: number}[]
+  scores: { name: string; time: number }[];
 }
-const Leaderboard: React.FC<props> = (scores)=> {
+const Leaderboard: React.FC<props> = ({ scores }) => {
+  let scoreArray = scores;
   return (
-    <div>Leaderboard</div>
-  )
-}
+    <section className="leaderboard">
+      {scoreArray.map((score) => (
+        <Scores name={score.name} time={score.time} />
+      ))}
+    </section>
+  );
+};
 
-export default Leaderboard
+export default Leaderboard;

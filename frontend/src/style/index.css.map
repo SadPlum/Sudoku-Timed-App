@@ -1,12 +1,18 @@
 {
     "version": 3,
-    "mappings": "ACAA,AAAA,CAAC,CAAC;EACA,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;CACX",
+    "mappings": "ACAA,AAAA,CAAC,CAAC;EACA,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;CACX;;AIHD,AAAA,YAAY,CAAC;EACX,MAAM,EAAE,eAAe;EACvB,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;EACb,MAAM,EAAE,IAAI;CAOb;;AAXD,AAKE,YALU,CAKV,cAAc,CAAC;EACb,UAAU,EAAE,IAAI;EAChB,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,YAAY;CAC9B;;ACVH,AAAA,cAAc,CAAC;EACb,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,IAAI;EACZ,UAAU,EAAE,MAAM;CACnB;;ACJD,AAAA,UAAU,CAAC;EACT,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;EACb,MAAM,EAAE,IAAI;CAMb;;AATD,AAIE,UAJQ,CAIR,UAAU,CAAC;EACT,UAAU,EAAE,OAAkB;EAC9B,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;CACd;;ACRH,AAAA,YAAY,CAAC;EACX,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,IAAI;CACb;;ACHD,AAAA,OAAO,CAAC;EACN,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,aAAa;CAC/B",
     "sources": [
         "index.scss",
         "_default.scss",
         "_fonts.scss",
         "_variables.scss",
-        "_frontpage.scss"
+        "_frontpage.scss",
+        "components/displayGame/_displayGame.scss",
+        "components/displayGame/_difficultyBar.scss",
+        "components/displayGame/_gameImage.scss",
+        "components/displayGame/_leaderboard.scss",
+        "components/displayGame/_scores.scss",
+        "components/displayGame/_displayGameButton.scss"
     ],
     "names": [],
     "file": "index.css"
