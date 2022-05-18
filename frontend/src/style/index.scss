@@ -1,4 +1,14 @@
+// base styles
+
 @import "./default";
 @import "./fonts";
 @import "./variables";
 @import "./frontpage";
+
+// display game page and compoenents
+@import "./components/displayGame/displayGame";
+@import "./components/displayGame/difficultyBar";
+@import "./components/displayGame/gameImage";
+@import "./components/displayGame/leaderboard";
+@import "./components/displayGame/scores";
+@import "./components/displayGame/displayGameButton";

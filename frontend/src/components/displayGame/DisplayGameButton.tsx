@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function DisplayGameButton() {
-  return (
-    <div>DisplayGameButton</div>
-  )
+  return <button>btn</button>;
 }
 
-export default DisplayGameButton
+export default DisplayGameButton;

@@ -2,4 +2,60 @@
   margin: 0;
   padding: 0;
 }
+
+.displayGame {
+  border: 1px solid black;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+}
+
+.displayGame .buttonSection {
+  margin-top: 10px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.difficultyBar {
+  width: 40%;
+  margin: auto;
+  text-align: center;
+}
+
+.gameImage {
+  width: 150px;
+  height: 150px;
+  margin: auto;
+}
+
+.gameImage .tempImage {
+  background: #eeb8b8;
+  width: 150px;
+  height: 150px;
+}
+
+.leaderboard {
+  width: 80%;
+  margin: auto;
+}
+
+.scores {
+  width: 40%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
 /*# sourceMappingURL=index.css.map */
