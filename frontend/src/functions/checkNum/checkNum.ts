@@ -2,14 +2,16 @@
 
 const typeCheckAxis = (col: number, axis: string) => {
   if (col < 0 || col > 8 || typeof col !== "number") {
-    console.log(`${axis} is ${col}. ${axis} is type of ${typeof col}`);
+    console.log(
+      `returned false. ${axis} is ${col}. ${axis} is type of ${typeof col}`
+    );
     return false;
   }
 };
 
 const typeCheckNumber = (num: number) => {
   if (num < 1 || num > 9 || typeof num !== "number") {
-    console.log(`num is ${num}. num is type of ${typeof num}`);
+    console.log(`returned false. num is ${num}. num is type of ${typeof num}`);
     return false;
   }
 };

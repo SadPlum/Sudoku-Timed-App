@@ -1,42 +1,27 @@
-const {
-  checkRowValid,
-  checkColValid,
-  checkCubeValid,
-  checkNumValid,
-} = require("./checkNum");
-// checkRowValid(board,num, row)
+const { checkNumValid } = require("./checkNum");
+// checkCubeValid(board,num, Cube)
 // checkColValid(board, num, col)
 // checkCubeValid(board, num, row, col)
 // checkNumValid(board, num, row, col)
 
-const {
-  blankBoard,
-  board1Valid,
-  board1NotValid,
-  board2Valid,
-  board2NotValid,
-  board3Valid,
-} = require("../../testBoardsData/testBoards");
+const { blankBoard, board1Valid } = require("../../testBoardsData/testBoards");
 
-describe("checkRowValid", () => {
-  test("checkRowValid with not enough arguments", () => {
-    expect(checkRowValid(blankBoard, 1)).toBe(false);
+describe("CheckNumValid", () => {
+  // testing inputs
+  test("CheckNumValid with not enough arguments", () => {
+    expect(checkNumValid(blankBoard, 1, 1)).toBe(false);
   });
-
-  test("checkRowValid with enough arguments", () => {
-    expect(checkRowValid(blankBoard, 1, 1)).toBe(true);
+  test("CheckNumValid with enough arguments", () => {
+    expect(checkNumValid(blankBoard, 1, 1, 1)).toBe(true);
   });
-  test("checkRowValid with too enough arguments", () => {
-    expect(checkRowValid(blankBoard, 1, 1, 1)).toBe(true);
+  test("CheckNumValid with too many arguments", () => {
+    expect(checkNumValid(blankBoard, 1, 1, 1, 1, 1)).toBe(true);
+    expect(checkNumValid(board1Valid, 1, 8, 1, 1, 1)).toBe(false);
   });
-  test("checkRowValid with bad numbers", () => {
-    expect(checkRowValid(blankBoard, "a", 1)).toBe(false);
-    expect(checkRowValid(blankBoard, 0, 1)).toBe(false);
-    expect(checkRowValid(blankBoard, 10, 1)).toBe(false);
-  });
-  test("checkRowValid with bad row", () => {
-    expect(checkRowValid(blankBoard, 1, "a")).toBe(false);
-    expect(checkRowValid(blankBoard, 1, -1)).toBe(false);
-    expect(checkRowValid(blankBoard, 1, 9)).toBe(false);
+  test("CheckNumValid on valid board", () => {
+    expect(checkNumValid(board1Valid, 1, 1, 1)).toBe(true);
+    expect(checkNumValid(board1Valid, 1, 7, 1)).toBe(false);
+    expect(checkNumValid(board1Valid, 1, 1, 7)).toBe(true);
+    expect(checkNumValid(board1Valid, 1, 6, 3)).toBe(true);
   });
 });
