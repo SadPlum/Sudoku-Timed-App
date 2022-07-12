@@ -1,5 +1,6 @@
-export const generateBoard = () => {
-  let blankBoard: number[][] = [
+export const generateBoard = (board: number[][]) => {
+  // blank board template
+  const blankBoard: number[][] = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],

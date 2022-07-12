@@ -1,4 +1,4 @@
-const { checkRowValid } = require("./checkNum");
+const { checkRowValid } = require("./checkNumValid");
 // checkRowValid(board,num, row)
 // checkColValid(board, num, col)
 // checkCubeValid(board, num, row, col)
