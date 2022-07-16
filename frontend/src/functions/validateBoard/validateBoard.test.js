@@ -1,20 +1,22 @@
 const { validateBoard } = require("./validateBoard");
 
 const {
-  blankBoard,
-  board1Valid,
   board1ValidComplete,
+  board1Valid,
   board1NotValidComplete,
 } = require("../../testBoardsData/testBoards");
 
 describe("validateBoard", () => {
-  test("Test validateBoard on valid board", () => {
+  test("validateBoard on valid board", () => {
     const check = validateBoard(board1ValidComplete);
     expect(check).toBe(true);
   });
-
-  test("test validateBoard on invalid board", () => {
+  test("validateBoard on not valid board", () => {
     const check = validateBoard(board1NotValidComplete);
+    expect(check).toBe(false);
+  });
+  test("validateBoard on not complete, valid boards", () => {
+    const check = validateBoard(board1Valid);
     expect(check).toBe(false);
   });
 });

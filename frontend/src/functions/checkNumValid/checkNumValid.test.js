@@ -19,6 +19,7 @@ describe("CheckNumValid", () => {
     expect(checkNumValid(board1Valid, 1, 8, 1, 1, 1)).toBe(false);
   });
   test("CheckNumValid on valid board", () => {
+    expect(checkNumValid(blankBoard, 1, 0, 0)).toBe(true);
     expect(checkNumValid(board1Valid, 1, 1, 1)).toBe(true);
     expect(checkNumValid(board1Valid, 1, 7, 1)).toBe(false);
     expect(checkNumValid(board1Valid, 1, 1, 7)).toBe(true);

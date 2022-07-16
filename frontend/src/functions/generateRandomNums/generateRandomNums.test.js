@@ -10,6 +10,9 @@ describe("generateRandomNums", () => {
 
   test("generateRandomNums should have 9 elements", () => {
     expect(generateRandomNums()).toHaveLength(9);
+    expect(generateRandomNums()).toHaveLength(9);
+    expect(generateRandomNums()).toHaveLength(9);
+    expect(generateRandomNums()).toHaveLength(9);
   });
 
   test("generateRandomNums should not equal [1,2,3,4,5,6,7,8,9]", () => {

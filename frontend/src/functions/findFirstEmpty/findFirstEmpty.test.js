@@ -5,6 +5,7 @@ const { findFirstEmpty } = require("./findFirstEmpty");
 const {
   blankBoard,
   board1Valid,
+  board1ValidComplete,
   board2Valid,
   filledBoard,
   mostlyFilledBoard,
@@ -14,11 +15,10 @@ describe("findFirstEmpty", () => {
   //    testing on empty and filled boards
   test("findFirstEmpty on empty and filled boards", () => {
     expect(findFirstEmpty(blankBoard)).toStrictEqual([0, 0]);
-    expect(findFirstEmpty(filledBoard)).toBe([-1, 1]);
+    expect(findFirstEmpty(filledBoard)).toStrictEqual([-1, -1]);
+    expect(findFirstEmpty(board1ValidComplete)).toStrictEqual([-1, -1]);
   });
-  test("findFirstEmpty on invalid board", () => {
-    expect(findFirstEmpty(true)).toStrictEqual([-1, -1]);
-  });
+
   //   testing on known boards
   test("findFirstEmpty to return proper values", () => {
     expect(findFirstEmpty(board1Valid)).toStrictEqual([0, 1]);
