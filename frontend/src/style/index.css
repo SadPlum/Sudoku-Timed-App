@@ -58,4 +58,22 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+
+.cell {
+  width: 20px;
+}
+
+.board {
+  width: 180px;
+  height: 180px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
 /*# sourceMappingURL=index.css.map */
