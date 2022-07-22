@@ -4,29 +4,32 @@ import Cell from "./Cell";
 const {
   generateBoard,
 } = require("../../functions/generateBoard/generateBoard");
+const {
+  randomizePlayBoard,
+} = require("../../functions/randomizePlayBoard/randomizePlayBoard");
 
 function Board() {
   const [board, setBoard] = useState<number[][]>();
-  const [flatBoard, setFlatBoard] = useState<number[]>();
+  const [flatGameBoard, setFlatGameBoard] = useState<number[]>();
+  const [flatPlayBoard, setFlatPlayBoard] = useState<number[]>();
   useEffect(() => {
     const generatedBoard: number[][] = generateBoard();
     setBoard(generatedBoard);
   }, []);
   useEffect(() => {
     if (board) {
-      const newFlatBoard: number[] = board?.flat();
-      setFlatBoard(newFlatBoard);
+      setFlatGameBoard(board.flat());
+      const playBoard = randomizePlayBoard(board, 40);
+      setFlatPlayBoard(playBoard);
+      console.log(playBoard);
     }
   }, [board]);
-  useEffect(() => {
-    console.log(flatBoard);
-  }, [flatBoard]);
 
   return (
     <div className="board">
-      {flatBoard &&
-        flatBoard.map((number: number) => {
-          return <Cell number={number} />;
+      {flatPlayBoard &&
+        flatPlayBoard.map((number: number, i) => {
+          return <Cell number={number} key={i} />;
         })}
     </div>
   );
