@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import DisplayGame from "../components/displayGame/DisplayGame";
 
 function Frontpage() {

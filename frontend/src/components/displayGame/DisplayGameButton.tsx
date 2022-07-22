@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+const {
+  generateBoard,
+} = require("../../functions/generateBoard/generateBoard");
+const { blankBoard } = require("../../testBoardsData/testBoards");
 
 function DisplayGameButton() {
-  return <button>btn</button>;
+  let board = blankBoard;
+  return (
+    <button
+      onClick={() => {
+        generateBoard(board);
+      }}
+    >
+      btn
+    </button>
+  );
 }
 
 export default DisplayGameButton;

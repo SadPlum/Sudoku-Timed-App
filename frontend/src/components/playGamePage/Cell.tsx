@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
 
-function Cell() {
-  return (
-    <div>Cell</div>
-  )
+interface Props {
+  number: number;
+  wrongCheck?: boolean;
 }
 
-export default Cell
+function Cell({ number, wrongCheck }: Props) {
+  return <div className="cell">{number}</div>;
+}
+
+export default Cell;

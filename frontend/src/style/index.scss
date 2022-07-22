@@ -5,10 +5,14 @@
 @import "./variables";
 @import "./frontpage";
 
-// display game page and compoenents
+// display game page and components
 @import "./components/displayGame/displayGame";
 @import "./components/displayGame/difficultyBar";
 @import "./components/displayGame/gameImage";
 @import "./components/displayGame/leaderboard";
 @import "./components/displayGame/scores";
 @import "./components/displayGame/displayGameButton";
+
+// play game page and components
+@import "./components/playGame/cell";
+@import "./components/playGame/board";
