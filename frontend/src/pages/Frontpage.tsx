@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import DisplayGame from "../components/displayGame/DisplayGame";
 
 function Frontpage() {
@@ -10,7 +10,7 @@ function Frontpage() {
   return (
     <main className="frontpage">
       {" "}
-      <DisplayGame difficulty="easy" scores={tempScores} />
+      <DisplayGame difficulty="easy" difficultyNums={40} scores={tempScores} />
     </main>
   );
 }
