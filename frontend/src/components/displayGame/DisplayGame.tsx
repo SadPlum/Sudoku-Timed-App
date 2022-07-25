@@ -3,13 +3,14 @@ import DifficultyBar from "./DifficultyBar";
 import GameImage from "./GameImage";
 import Leaderboard from "./Leaderboard";
 import DisplayGameButton from "./DisplayGameButton";
+import { displayInterface } from "../../interfaces/displayInterface";
 
-interface props {
-  difficulty?: string;
-  image?: string;
-  scores: { name: string; time: number }[];
-}
-const DisplayGame: React.FC<props> = ({ difficulty, image, scores }) => {
+const DisplayGame: React.FC<displayInterface> = ({
+  difficulty,
+  image,
+  scores,
+  difficultyNums,
+}) => {
   return (
     <section className="displayGame">
       <DifficultyBar difficulty={difficulty} />
