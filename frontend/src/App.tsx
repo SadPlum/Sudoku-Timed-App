@@ -12,7 +12,10 @@ function App() {
       <Heading />
       <Routes>
         <Route path="/" element={<Frontpage />} />
-        <Route path="/gamepage" element={<Gamepage />} />
+        <Route
+          path="/gamepage/:difficulty/:difficultyNums"
+          element={<Gamepage />}
+        />
         <Route path="*" element={<Errorpage />} />
       </Routes>
     </Router>

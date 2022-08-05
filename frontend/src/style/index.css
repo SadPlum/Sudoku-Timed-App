@@ -3,11 +3,26 @@
   padding: 0;
 }
 
+.displayGameBox {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: auto;
+}
+
 .displayGame {
   border: 1px solid black;
   width: 300px;
   height: 300px;
   margin: auto;
+  margin-bottom: 30px;
 }
 
 .displayGame .buttonSection {
@@ -60,12 +75,35 @@
 }
 
 .cell {
-  width: 20px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cell:hover {
+  border-color: black;
+}
+
+.cell:focus {
+  border: 1px solid black;
+}
+
+.hightlighted {
+  background-color: rgba(102, 100, 100, 0.1);
 }
 
 .board {
-  width: 180px;
-  height: 180px;
+  width: 216px;
+  height: 216px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

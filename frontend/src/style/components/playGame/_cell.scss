@@ -1,3 +1,18 @@
 .cell {
-  width: 20px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    border-color: black;
+  }
+  &:focus {
+    border: 1px solid black;
+  }
+}
+
+.hightlighted {
+  background-color: rgba(102, 100, 100, 0.1);
 }

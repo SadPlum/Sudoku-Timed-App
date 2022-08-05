@@ -10,7 +10,38 @@ function Frontpage() {
   return (
     <main className="frontpage">
       {" "}
-      <DisplayGame difficulty="easy" difficultyNums={40} scores={tempScores} />
+      <div className="displayGameBox">
+        <DisplayGame
+          difficulty="begginer"
+          difficultyNums={40}
+          scores={tempScores}
+        />
+        <DisplayGame
+          difficulty="easy"
+          difficultyNums={35}
+          scores={tempScores}
+        />
+        <DisplayGame
+          difficulty="medium"
+          difficultyNums={30}
+          scores={tempScores}
+        />
+        <DisplayGame
+          difficulty="hard"
+          difficultyNums={25}
+          scores={tempScores}
+        />
+        <DisplayGame
+          difficulty="evil"
+          difficultyNums={20}
+          scores={tempScores}
+        />
+        <DisplayGame
+          difficulty="diabolical"
+          difficultyNums={17}
+          scores={tempScores}
+        />
+      </div>
     </main>
   );
 }
