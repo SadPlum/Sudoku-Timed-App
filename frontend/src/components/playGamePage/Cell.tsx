@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 
 interface Props {
   playNumber: number;
-  gameNumber: number;
   index: number;
   highlighted: boolean;
   playBoard: number[];

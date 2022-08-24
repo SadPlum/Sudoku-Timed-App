@@ -5,6 +5,7 @@ import { boardInterface } from "../../interfaces/gameInterface";
 import Cell from "./Cell";
 
 const Board: React.FC<boardInterface> = ({
+  boardArray,
   setBoardArray,
   flatPlayBoard,
   setFlatPlayBoard,
@@ -14,7 +15,6 @@ const Board: React.FC<boardInterface> = ({
 
   const [highlightedCells, setHighlightedCells] = useState<number[]>([]);
   const [activeCell, setActiveCell] = useState<number>(NaN);
-  const [redoArray, setRedoArray] = useState<number[][]>([]);
 
   // If a cell has been changed, update the play board state to update the display
   const changeCellNum = (
@@ -26,10 +26,10 @@ const Board: React.FC<boardInterface> = ({
       i === index ? newNum : oldNum
     );
     setFlatPlayBoard(newFlatPlayBoard);
-    const newArray = redoArray;
+    const newArray = boardArray;
+    console.log(boardArray);
     newArray.push(newFlatPlayBoard);
-    setRedoArray(newArray);
-    console.log(redoArray);
+    setBoardArray(newArray);
   };
 
   // Used to add highlighted cells to easier visualize board when playing.
@@ -65,7 +65,6 @@ const Board: React.FC<boardInterface> = ({
     <div className="board" ref={boardRef}>
       <div className="board-grid">
         {flatPlayBoard &&
-          flatGameBoard &&
           lockedPlayBoard &&
           flatPlayBoard.map((number: number, i) => {
             return (
@@ -76,7 +75,6 @@ const Board: React.FC<boardInterface> = ({
                 playBoard={flatPlayBoard}
                 key={i}
                 index={i}
-                gameNumber={flatGameBoard[i]}
                 lockedNumber={lockedPlayBoard[i]}
                 setActiveCell={setActiveCell}
                 boardRef={boardRef}

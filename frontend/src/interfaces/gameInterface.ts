@@ -1,5 +1,7 @@
 export interface boardInterface {
-  timed: boolean;
-  difficulty: number;
-  difficultyNums: number;
+  boardArray: number[][];
+  setBoardArray: Function;
+  flatPlayBoard: number[];
+  setFlatPlayBoard: Function;
+  lockedPlayBoard: number[];
 }
