@@ -1,46 +1,20 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+
+import { boardInterface } from "../../interfaces/gameInterface";
 
 import Cell from "./Cell";
-const {
-  generateBoard,
-} = require("../../functions/generateBoard/generateBoard");
-const {
-  randomizePlayBoard,
-} = require("../../functions/randomizePlayBoard/randomizePlayBoard");
 
-function Board() {
+const Board: React.FC<boardInterface> = ({
+  setBoardArray,
+  flatPlayBoard,
+  setFlatPlayBoard,
+  lockedPlayBoard,
+}) => {
   const boardRef = useRef(null);
-  const { difficulty, difficultyNums } = useParams();
-  const [board, setBoard] = useState<number[][]>();
-  const [flatGameBoard, setFlatGameBoard] = useState<number[]>();
-  const [flatPlayBoard, setFlatPlayBoard] = useState<number[]>();
-  const [lockedPlayBoard, setLockedPlayBoard] = useState<number[]>();
+
   const [highlightedCells, setHighlightedCells] = useState<number[]>([]);
   const [activeCell, setActiveCell] = useState<number>(NaN);
-  const [fullBoard, setFullBoard] = useState<boolean>(false);
   const [redoArray, setRedoArray] = useState<number[][]>([]);
-
-  // Generates a nested board array
-  // Sets board as the active board
-  useEffect(() => {
-    const generatedBoard: number[][] = generateBoard();
-    setBoard(generatedBoard);
-  }, []);
-
-  // If board is created, flattens board.
-  // Creates a game board which does not change. (Used to validate if play board is valid)
-  // Creates a play board string based off the difficulty given (Board to be mutated)
-  // Creats a flattened board as the playing board (Creates a copy of play board to know
-  // which numbers are locked and which can be mutated).
-  useEffect(() => {
-    if (board) {
-      setFlatGameBoard(board.flat());
-      const playBoard = randomizePlayBoard(board, difficultyNums);
-      setFlatPlayBoard(playBoard);
-      setLockedPlayBoard(playBoard);
-    }
-  }, [board]);
 
   // If a cell has been changed, update the play board state to update the display
   const changeCellNum = (
@@ -112,6 +86,6 @@ function Board() {
       </div>
     </div>
   );
-}
+};
 
 export default Board;
