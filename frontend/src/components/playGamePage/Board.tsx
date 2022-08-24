@@ -18,6 +18,8 @@ function Board() {
   const [lockedPlayBoard, setLockedPlayBoard] = useState<number[]>();
   const [highlightedCells, setHighlightedCells] = useState<number[]>([]);
   const [activeCell, setActiveCell] = useState<number>(NaN);
+  const [fullBoard, setFullBoard] = useState<boolean>(false);
+  const [redoArray, setRedoArray] = useState<number[][]>([]);
 
   // Generates a nested board array
   // Sets board as the active board
@@ -46,10 +48,14 @@ function Board() {
     newNum: number,
     flatPlayBoard: number[]
   ) => {
-    const newFlatPlayBoard = flatPlayBoard.map((oldNum, i) =>
+    const newFlatPlayBoard: number[] = flatPlayBoard.map((oldNum, i) =>
       i === index ? newNum : oldNum
     );
     setFlatPlayBoard(newFlatPlayBoard);
+    const newArray = redoArray;
+    newArray.push(newFlatPlayBoard);
+    setRedoArray(newArray);
+    console.log(redoArray);
   };
 
   // Used to add highlighted cells to easier visualize board when playing.
@@ -74,7 +80,6 @@ function Board() {
     for (let i = cubeRow * 3; i < cubeRow * 3 + 3; i++) {
       for (let j = 0; j < 3; j++) {
         const num = cubeCol * 3 + j + i * 9;
-
         arr.push(num);
       }
     }
@@ -84,24 +89,27 @@ function Board() {
 
   return (
     <div className="board" ref={boardRef}>
-      {flatPlayBoard &&
-        flatGameBoard &&
-        lockedPlayBoard &&
-        flatPlayBoard.map((number: number, i) => {
-          return (
-            <Cell
-              highlighted={highlightedCells.includes(i) ? true : false}
-              playNumber={number}
-              changeCellNum={changeCellNum}
-              playBoard={flatPlayBoard}
-              key={i}
-              index={i}
-              gameNumber={flatGameBoard[i]}
-              lockedNumber={lockedPlayBoard[i]}
-              setActiveCell={setActiveCell}
-            />
-          );
-        })}
+      <div className="board-grid">
+        {flatPlayBoard &&
+          flatGameBoard &&
+          lockedPlayBoard &&
+          flatPlayBoard.map((number: number, i) => {
+            return (
+              <Cell
+                highlighted={highlightedCells.includes(i) ? true : false}
+                playNumber={number}
+                changeCellNum={changeCellNum}
+                playBoard={flatPlayBoard}
+                key={i}
+                index={i}
+                gameNumber={flatGameBoard[i]}
+                lockedNumber={lockedPlayBoard[i]}
+                setActiveCell={setActiveCell}
+                boardRef={boardRef}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 }

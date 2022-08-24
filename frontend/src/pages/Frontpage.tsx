@@ -12,7 +12,7 @@ function Frontpage() {
       {" "}
       <div className="displayGameBox">
         <DisplayGame
-          difficulty="begginer"
+          difficulty="beginner"
           difficultyNums={40}
           scores={tempScores}
         />
