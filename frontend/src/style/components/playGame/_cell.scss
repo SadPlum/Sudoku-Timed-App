@@ -1,3 +1,74 @@
 .cell {
-  width: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  // font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  outline: none;
+  &:hover {
+    border-color: black;
+  }
+  &:focus {
+    border: 1px solid black;
+  }
+
+  @for $i from 1 through 9 {
+    // horizontal outer lines
+    &:nth-child(#{$i}n + 0):nth-child(-n + 9) {
+      border-top: 1px solid black;
+    }
+    &:nth-child(#{$i}n + 73):nth-child(-n + 81) {
+      border-bottom: 1px solid black;
+    }
+
+    // horizontal inner lines
+    &:nth-child(#{$i}n + 19):nth-child(-n + 27) {
+      border-bottom: 1px solid black;
+    }
+    &:nth-child(#{$i}n + 28):nth-child(-n + 36) {
+      border-top: 1px solid black;
+    }
+    &:nth-child(#{$i}n + 46):nth-child(-n + 54) {
+      border-bottom: 1px solid black;
+    }
+    &:nth-child(#{$i}n + 55):nth-child(-n + 63) {
+      border-top: 1px solid black;
+    }
+  }
+  @for $i from 1 * 9 through 9 {
+    // vertical outer lines
+    &:nth-child(#{$i}n + 1):nth-child(-n + 73) {
+      border-left: 1px solid black;
+    }
+
+    &:nth-child(#{$i}n + 0):nth-child(-n + 81) {
+      border-right: 1px solid black;
+    }
+
+    // vertical inner line
+    &:nth-child(#{$i}n + 3):nth-child(-n + 81) {
+      border-right: 1px solid black;
+    }
+    &:nth-child(#{$i}n + 4):nth-child(-n + 81) {
+      border-left: 1px solid black;
+    }
+    &:nth-child(#{$i}n + 6):nth-child(-n + 81) {
+      border-right: 1px solid black;
+    }
+    &:nth-child(#{$i}n + 7):nth-child(-n + 81) {
+      border-left: 1px solid black;
+    }
+  }
+}
+
+.hightlighted {
+  background-color: rgba(255, 253, 253, 0.705);
+}
+
+.locked {
+  font-weight: 400;
 }

@@ -20,12 +20,11 @@ export const randomizePlayBoard = (board: number[][], num: number) => {
   }
   const flatBoard: number[] = board.flat();
   const visibleNums: number[] = newArray.slice(0, num);
-  console.log(visibleNums);
+
   let playBoard: number[] = blankBoard.flat();
   visibleNums.forEach((num) => {
     playBoard[num] = flatBoard[num];
   });
 
-  console.log(playBoard);
   return playBoard;
 };

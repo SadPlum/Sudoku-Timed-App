@@ -1,12 +1,11 @@
 import React from "react";
 import Board from "../components/playGamePage/Board";
-import { GameInterface } from "../interfaces/gameInterface";
+import PlayGamePage from "../components/playGamePage/PlayGamePage";
 
 function Gamepage() {
   return (
     <div>
-      Gamepage
-      <Board />
+      <PlayGamePage />
     </div>
   );
 }
