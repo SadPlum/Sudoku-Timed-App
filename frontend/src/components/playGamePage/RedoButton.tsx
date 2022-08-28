@@ -1,5 +1,3 @@
-import React from "react";
-
 interface Props {
   setFlatPlayBoard: Function;
   setBoardArray: Function;
@@ -8,16 +6,18 @@ interface Props {
 
 const RedoButton = ({ setFlatPlayBoard, setBoardArray, boardArray }: Props) => {
   const handleClick = () => {
-    //   guard clause
-    if (boardArray.length < 2) return;
+    //   guard clause to keep the boardArray with at least the starting board
+    if (boardArray.length <= 1) return;
 
-    // set
-    // setFlatPlayBoard(boardArray[boardArray.length - 2]);
-    console.log(boardArray[-1]);
-    // const tempArray = boardArray;
-    // tempArray.pop();
-    // tempArray.pop();
-    // setBoardArray(tempArray);
+    // Sets the play board (flat play board) to the second to last board in array
+    setFlatPlayBoard(boardArray[boardArray.length - 2]);
+
+    // Temporary array to remove the last board in board array
+    let tempArray = boardArray;
+    tempArray.pop();
+
+    // Sets the board array to the array minus the last board in array
+    setBoardArray(tempArray);
   };
 
   return <button onClick={handleClick}>RedoButton</button>;

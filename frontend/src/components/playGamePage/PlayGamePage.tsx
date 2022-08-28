@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Board from "./Board";
 import RedoButton from "./RedoButton";
+import Title from "./Title";
 const {
   generateBoard,
 } = require("../../functions/generateBoard/generateBoard");
@@ -29,14 +30,15 @@ function PlayGamePage() {
     );
     setFlatPlayBoard(playBoard);
     setLockedPlayBoard(playBoard);
-    console.log(playBoard, boardArray);
-    console.log(boardArray.push(playBoard));
-    // const newArray: number[][] = boardArray.push(playBoard);
-    // setBoardArray(newArray);
+    let newArray: number[][] = [];
+    newArray.push(playBoard);
+    setBoardArray(newArray);
   }, []);
 
   return (
     <div>
+      {difficulty && <Title difficulty={difficulty} />}
+
       {flatPlayBoard && lockedPlayBoard && (
         <Board
           boardArray={boardArray}
