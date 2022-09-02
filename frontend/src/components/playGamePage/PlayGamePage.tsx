@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Board from "./Board";
 import RedoButton from "./RedoButton";
 import Title from "./Title";
+import Timer from "./Timer";
 const {
   generateBoard,
 } = require("../../functions/generateBoard/generateBoard");
@@ -35,6 +36,8 @@ function PlayGamePage() {
     setBoardArray(newArray);
   }, []);
 
+  useEffect(() => {}, []);
+
   return (
     <div>
       {difficulty && <Title difficulty={difficulty} />}
@@ -53,6 +56,7 @@ function PlayGamePage() {
         setBoardArray={setBoardArray}
         boardArray={boardArray}
       />
+      <Timer />
     </div>
   );
 }
