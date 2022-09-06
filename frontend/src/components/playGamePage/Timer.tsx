@@ -12,7 +12,7 @@ function Timer() {
         setMinutes((minutes) => minutes + 1);
         setSeconds(0);
       } else setSeconds(secondsRef.current + 1);
-    }, 200);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);

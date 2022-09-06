@@ -8,11 +8,12 @@ const Board: React.FC<boardInterface> = ({
   boardArray,
   setBoardArray,
   flatPlayBoard,
+  flatGameBoard,
   setFlatPlayBoard,
   lockedPlayBoard,
 }) => {
   const boardRef = useRef(null);
-
+  const [wrongCheck, setWrongCheck] = useState<undefined | boolean>(undefined);
   const [highlightedCells, setHighlightedCells] = useState<number[]>([]);
   const [activeCell, setActiveCell] = useState<number>(NaN);
 
@@ -62,26 +63,37 @@ const Board: React.FC<boardInterface> = ({
   }, [activeCell]);
 
   return (
-    <div className="board" ref={boardRef}>
-      <div className="board-grid">
-        {flatPlayBoard &&
-          lockedPlayBoard &&
-          flatPlayBoard.map((number: number, i) => {
-            return (
-              <Cell
-                highlighted={highlightedCells.includes(i) ? true : false}
-                playNumber={number}
-                changeCellNum={changeCellNum}
-                playBoard={flatPlayBoard}
-                key={i}
-                index={i}
-                lockedNumber={lockedPlayBoard[i]}
-                setActiveCell={setActiveCell}
-                boardRef={boardRef}
-              />
-            );
-          })}
-      </div>
+    <div>
+      {wrongCheck === undefined && (
+        <div>
+          {" "}
+          <button onClick={() => setWrongCheck(true)}>true</button>{" "}
+          <button onClick={() => setWrongCheck(false)}>False</button>{" "}
+        </div>
+      )}
+      {wrongCheck !== undefined && flatPlayBoard && lockedPlayBoard && (
+        <div className="board" ref={boardRef}>
+          <div className="board-grid">
+            {flatPlayBoard.map((number: number, i) => {
+              return (
+                <Cell
+                  wrongCheck={wrongCheck}
+                  highlighted={highlightedCells.includes(i) ? true : false}
+                  playNumber={number}
+                  changeCellNum={changeCellNum}
+                  playBoard={flatPlayBoard}
+                  key={i}
+                  index={i}
+                  gameNumber={flatGameBoard[i]}
+                  lockedNumber={lockedPlayBoard[i]}
+                  setActiveCell={setActiveCell}
+                  boardRef={boardRef}
+                />
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
