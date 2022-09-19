@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+const Schema = require("mongoose");
 const mongoose = require("mongoose");
 
 interface Game {
@@ -35,12 +35,10 @@ const leaderboardSchema = new Schema({
 });
 
 const openGameSchema = new Schema({
-  id: { type: String, required: true, unique: true },
+  id: { type: Number, required: true, unique: true },
   difficulty: { type: String, required: true, unique: true },
   game: { type: gameSchema, required: true },
   leaderboard: { type: leaderboardSchema, required: true },
 });
 
-const OpenGames = mongoose.model("openGames", openGameSchema);
-
-module.exports = OpenGames;
+export const OpenGames = mongoose.model("openGames", openGameSchema);

@@ -1,8 +1,5 @@
-import { v4 as uuidv4 } from "uuid";
-const id = uuidv4();
-
-const easy = {
-  id: id,
+export const easy = {
+  id: 1,
   difficulty: "easy",
   game: {
     difficulty: "easy",
@@ -30,11 +27,11 @@ const easy = {
     ],
   },
   leaderboard: [
-    { name: "abc", time: "6.57" },
-    { name: "def", time: "5.09" },
+    { name: "mno", time: "1.04" },
     { name: "ghi", time: "3.32" },
     { name: "jkl", time: "4.00" },
-    { name: "mno", time: "1.04" },
+    { name: "abc", time: "6.57" },
+    { name: "def", time: "5.09" },
     { name: "pqr", time: "6.40" },
   ],
 };

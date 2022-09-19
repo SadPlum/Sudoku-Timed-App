@@ -5,8 +5,15 @@
 //   { name: "jkl", time: "4.00" },
 //   { name: "mno", time: "1.04" },
 //   { name: "pqr", time: "6.40" },
-// ],
-// And returns array sorted in ascnending order based on time.
+// ]
+// And returns array sorted in ascnending order based on time. ex:  [
+//   { name: "mno", time: "1.04" },
+//   { name: "ghi", time: "3.32" },
+//   { name: "jkl", time: "4.00" },
+//   { name: "def", time: "5.09" },
+//   { name: "pqr", time: "6.40" },
+//   { name: "abc", time: "6.57" },
+// ]
 
 interface Entries {
   name: string;
