@@ -1,7 +1,16 @@
-.displayGameBox {
-  width: 80%;
+.displayGameBox-container {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
   margin: auto;
+}
+
+.displayGameBox {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 302px [col-start]);
+  column-gap: 40px;
+  row-gap: 40px;
+  place-items: center;
 }

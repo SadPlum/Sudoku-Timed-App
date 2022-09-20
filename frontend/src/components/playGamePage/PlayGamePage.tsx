@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Board from "./Board";
 import RedoButton from "./RedoButton";
 import Title from "./Title";
+import Timer from "./Timer";
 const {
   generateBoard,
 } = require("../../functions/generateBoard/generateBoard");
@@ -12,7 +13,7 @@ const {
 
 function PlayGamePage() {
   const [board, setBoard] = useState<number[][]>();
-
+  const [flatGameBoard, setFlatGameBoard] = useState<number[]>();
   const [flatPlayBoard, setFlatPlayBoard] = useState<number[]>();
   const [lockedPlayBoard, setLockedPlayBoard] = useState<number[]>();
   const [boardArray, setBoardArray] = useState<number[][]>([]);
@@ -24,6 +25,7 @@ function PlayGamePage() {
   useEffect(() => {
     const generatedBoard: number[][] = generateBoard();
     setBoard(generatedBoard);
+    setFlatGameBoard(generatedBoard.flat());
     const playBoard: number[] = randomizePlayBoard(
       generatedBoard,
       difficultyNums
@@ -35,15 +37,18 @@ function PlayGamePage() {
     setBoardArray(newArray);
   }, []);
 
+  useEffect(() => {}, []);
+
   return (
     <div>
       {difficulty && <Title difficulty={difficulty} />}
 
-      {flatPlayBoard && lockedPlayBoard && (
+      {flatPlayBoard && lockedPlayBoard && flatGameBoard && (
         <Board
           boardArray={boardArray}
           setBoardArray={setBoardArray}
           flatPlayBoard={flatPlayBoard}
+          flatGameBoard={flatGameBoard}
           setFlatPlayBoard={setFlatPlayBoard}
           lockedPlayBoard={lockedPlayBoard}
         />
@@ -53,6 +58,7 @@ function PlayGamePage() {
         setBoardArray={setBoardArray}
         boardArray={boardArray}
       />
+      <Timer />
     </div>
   );
 }

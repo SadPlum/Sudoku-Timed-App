@@ -5,18 +5,39 @@
   padding: 0;
 }
 
-.displayGameBox {
-  width: 80%;
+.displayGameBox-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
   margin: auto;
+}
+
+.displayGameBox {
+  margin: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (302px [col-start])[3];
+      grid-template-columns: repeat(3, 302px [col-start]);
+  -webkit-column-gap: 40px;
+          column-gap: 40px;
+  row-gap: 40px;
+  place-items: center;
+}
+
+.heading {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+  margin: 40px;
 }
 
 .displayGame {
@@ -24,7 +45,6 @@
   width: 300px;
   height: 300px;
   margin: auto;
-  margin-bottom: 30px;
 }
 
 .displayGame .buttonSection {
@@ -347,6 +367,11 @@
 
 .locked {
   font-weight: 400;
+}
+
+.wrong {
+  color: red;
+  font-weight: 500;
 }
 
 .board {

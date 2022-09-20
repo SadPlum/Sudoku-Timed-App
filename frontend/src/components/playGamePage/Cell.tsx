@@ -6,6 +6,7 @@ interface Props {
   highlighted: boolean;
   playBoard: number[];
   lockedNumber: number;
+  gameNumber: number;
   changeCellNum: Function;
   setActiveCell: Function;
   wrongCheck?: boolean;
@@ -17,6 +18,7 @@ function Cell({
   wrongCheck,
   highlighted,
   changeCellNum,
+  gameNumber,
   lockedNumber,
   index,
   playBoard,
@@ -54,7 +56,7 @@ function Cell({
       className={highlighted ? "cell hightlighted" : "cell"}
       onClick={handleClick}
     >
-      <div>
+      <div className={wrongCheck && playNumber !== gameNumber ? "wrong" : ""}>
         <span className={lockedNumber !== 0 ? "locked" : ""}>
           {playNumber !== 0 ? playNumber : ""}
         </span>

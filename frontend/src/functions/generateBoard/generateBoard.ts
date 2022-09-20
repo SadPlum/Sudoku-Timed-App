@@ -54,6 +54,7 @@ export const generateBoard = () => {
   generate();
   const validate = validateBoard(board);
   if (validate) {
+    console.log(board);
     return board;
   } else {
     console.log(`Board not valid ${board}`);

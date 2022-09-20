@@ -5,6 +5,9 @@
 @import "./variables";
 @import "./frontpage";
 
+// heading
+@import "./components/heading";
+
 // display game page and components
 @import "./components/displayGame/displayGame";
 @import "./components/displayGame/difficultyBar";
