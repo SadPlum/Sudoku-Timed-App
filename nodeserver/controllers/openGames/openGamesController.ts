@@ -1,7 +1,5 @@
-const { allOpenGames } = require("../../models/openGames/openGameModel.ts");
+import { allOpenGames } from "../../models/openGames/openGameModel";
 
-const getAllGames = () => {
+export const getAllGames = () => {
   return allOpenGames();
 };
-
-module.exports = getAllGames;
