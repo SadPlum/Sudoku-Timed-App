@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
-    "types": ["node"]
+    "types": ["node"],
+    "lib": ["es6"],
+    "module": "commonjs"
   }
 }

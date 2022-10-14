@@ -1,14 +1,15 @@
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+import mongoose from "mongoose";
+import * as dotenv from "dotenv";
 dotenv.config();
 
 const uri = `mongodb+srv://Admin:${process.env.DATABASE_PASSWORD}@cluster0.0hsqbbs.mongodb.net/?retryWrites=true&w=majority`;
 
 // Establishes mongoDB connection
-const connect = async () => {
+export const connectMongo = async () => {
   try {
     await mongoose.connect(uri).then(() => {
       console.log("connected to database");
+      console.log(mongoose.connection.db.listCollections());
       return true;
     });
   } catch (error) {
@@ -16,5 +17,3 @@ const connect = async () => {
     return false;
   }
 };
-
-module.exports = connect;

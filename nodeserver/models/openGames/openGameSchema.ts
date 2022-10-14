@@ -1,5 +1,5 @@
-const Schema = require("mongoose");
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import { Schema } from "mongoose";
 
 interface Game {
   difficulty: string;
@@ -41,4 +41,8 @@ const openGameSchema = new Schema({
   leaderboard: { type: leaderboardSchema, required: true },
 });
 
-export const OpenGames = mongoose.model("openGames", openGameSchema);
+export const openGames = mongoose.model(
+  "openGames",
+  openGameSchema,
+  "openGames"
+);

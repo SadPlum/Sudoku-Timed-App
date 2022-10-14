@@ -1,10 +1,10 @@
-const express = require("express");
+import express = require("express");
+import xss = require("xss-clean");
+import mongoSanitize = require("express-mongo-sanitize");
+import mongoose = require("mongoose");
+import { connectMongo } from "./functions/databaseConnect/databaseConnect";
+import { openGameRouter } from "./routers/openGameRoutes";
 const app = express();
-const xss = require("xss-clean");
-const mongoSanitize = require("express-mongo-sanitize");
-const mongoose = require("mongoose");
-const connectMongo = require("./functions/databaseConnect/databaseConnect.ts");
-const openGameRouter = require("./routers/openGameRoutes.ts");
 
 // sanitizes potential inputs.
 app.use(xss());
@@ -22,7 +22,7 @@ const server = app.listen(5000, () => {
   connectMongo();
 });
 
-app.use("/api/1/opengames", openGameRouter);
+app.use("/api/v1/opengames", openGameRouter);
 
 // Close the connection on close
 process.on("exit", () => {

@@ -1,5 +1,8 @@
-const openGame = require("./openGameSchema.ts");
+import { openGames } from "./openGameSchema";
 
-const allOpenGames = async () => await openGame.find();
-
-module.exports = allOpenGames;
+export const allOpenGames = async () => {
+  await openGames.find().exec((err, games) => {
+    if (err) throw err;
+    return games;
+  });
+};
