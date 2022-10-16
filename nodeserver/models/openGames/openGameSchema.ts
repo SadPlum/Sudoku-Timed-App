@@ -34,15 +34,18 @@ const leaderboardSchema = new Schema({
   leaderboard: { type: [playerSchema], required: true },
 });
 
-const openGameSchema = new Schema({
-  id: { type: Number, required: true, unique: true },
-  difficulty: { type: String, required: true, unique: true },
-  game: { type: gameSchema, required: true },
-  leaderboard: { type: leaderboardSchema, required: true },
-});
+const openGameSchema = new Schema(
+  {
+    id: { type: Number, required: true, unique: true },
+    difficulty: { type: String, required: true, unique: true },
+    game: { type: gameSchema, required: true },
+    leaderboard: { type: leaderboardSchema, required: true },
+  },
+  { collection: "openGames" }
+);
 
-export const openGames = mongoose.model(
-  "openGames",
+export const OpenGames = mongoose.model(
+  "OpenGame",
   openGameSchema,
   "openGames"
 );

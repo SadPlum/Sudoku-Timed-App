@@ -6,12 +6,16 @@ const router = express.Router();
 // BASE URL OF /api/v1/opengames
 
 // Asks controller to get games for the front page
-router.get("/", (req, res) => {
-  console.log("api/v1/opengames", "/");
-  const data = getAllGames();
-  console.log(data);
-  res.send(data);
-  res.body = JSON.stringify(data);
+router.get("/", async (req, res) => {
+  try {
+    const games = await getAllGames();
+    res.status(200).json({
+      status: "success",
+      data: games,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // Asks controller to get open game based on the difficulty

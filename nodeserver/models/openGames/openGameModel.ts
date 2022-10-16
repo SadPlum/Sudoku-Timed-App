@@ -1,8 +1,5 @@
-import { openGames } from "./openGameSchema";
+import { OpenGames } from "./openGameSchema";
 
-export const allOpenGames = async () => {
-  await openGames.find().exec((err, games) => {
-    if (err) throw err;
-    return games;
-  });
+export const allOpenGames = () => {
+  return OpenGames.find({});
 };
