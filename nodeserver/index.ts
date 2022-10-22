@@ -4,6 +4,7 @@ import mongoSanitize = require("express-mongo-sanitize");
 import mongoose = require("mongoose");
 import { connectMongo } from "./functions/databaseConnect/databaseConnect";
 import { openGameRouter } from "./routers/openGameRoutes";
+import { privateGameRouter } from "./routers/privateGameRouters";
 const app = express();
 
 // sanitizes potential inputs.
@@ -23,6 +24,7 @@ const server = app.listen(5000, () => {
 });
 
 app.use("/api/v1/opengames", openGameRouter);
+app.use("/api/v1/privategames", privateGameRouter);
 
 // Close the connection on close
 process.on("exit", () => {

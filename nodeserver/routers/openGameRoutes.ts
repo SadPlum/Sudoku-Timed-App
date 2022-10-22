@@ -1,29 +1,20 @@
 import express = require("express");
-import { getAllGames } from "../controllers/openGames/openGamesController";
+import {
+  getAllGames,
+  getGame,
+} from "../controllers/openGames/openGamesController";
 
 const router = express.Router();
 
 // BASE URL OF /api/v1/opengames
 
 // Asks controller to get games for the front page
-router.get("/", async (req, res) => {
-  try {
-    const games = await getAllGames();
-    res.status(200).json({
-      status: "success",
-      data: games,
-    });
-  } catch (err) {
-    console.log(err);
-  }
-});
+router.get("/", (req, res) => getAllGames(req, res));
 
 // Asks controller to get open game based on the difficulty
-router.get("/:difficulty", (req, res) => {});
+router.get("/:difficulty", (req, res) => getGame(req, res));
 
-// Asks router to send new entry for the open game of given difficulty
-router.post("/:difficulty", (req, res) => {});
-
+// Resets games each 2 weeks
 router.patch("/resetGames", (res, req) => {});
 
 export { router as openGameRouter };
