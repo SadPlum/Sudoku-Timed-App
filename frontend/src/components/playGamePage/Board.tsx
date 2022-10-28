@@ -11,6 +11,7 @@ const Board: React.FC<boardInterface> = ({
   flatGameBoard,
   setFlatPlayBoard,
   lockedPlayBoard,
+  setFullBoard,
 }) => {
   const boardRef = useRef(null);
   const [wrongCheck, setWrongCheck] = useState<undefined | boolean>(undefined);
