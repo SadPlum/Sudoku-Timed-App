@@ -3,4 +3,5 @@ export interface boardInterface {
   flatPlayBoard: number[];
   setFlatPlayBoard: Function;
   lockedPlayBoard: number[];
+  setFullBoard: Function;
 }

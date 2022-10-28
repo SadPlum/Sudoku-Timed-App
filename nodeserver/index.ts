@@ -2,11 +2,13 @@ import express = require("express");
 import xss = require("xss-clean");
 import mongoSanitize = require("express-mongo-sanitize");
 import mongoose = require("mongoose");
+import cors = require("cors");
 import { connectMongo } from "./functions/databaseConnect/databaseConnect";
 import { openGameRouter } from "./routers/openGameRoutes";
 import { privateGameRouter } from "./routers/privateGameRouters";
 const app = express();
 
+app.use(cors());
 // sanitizes potential inputs.
 app.use(xss());
 // prevents noSQL injections

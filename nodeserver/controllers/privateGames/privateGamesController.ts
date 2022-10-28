@@ -10,7 +10,8 @@ export const getPrivateGame = async (req, res) => {
 
 export const getBoard = async (req, res) => {
   try {
-    const game = await generatePrivateGame();
+    const difficulty = req.params.difficultyNum;
+    const game = await generatePrivateGame(difficulty);
     res.status(200).json({
       status: "success",
       data: game,
