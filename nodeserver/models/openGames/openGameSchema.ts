@@ -22,7 +22,7 @@ const playerSchema = new Schema<Player>({
   name: {
     type: String,
     required: true,
-    uppercase: true,
+
     trim: true,
     minLength: 3,
     maxLength: 10,
@@ -30,16 +30,13 @@ const playerSchema = new Schema<Player>({
   time: { type: String, required: true, trim: true, match: /[0-9]*\.[0-9]+/ },
 });
 
-const leaderboardSchema = new Schema({
-  leaderboard: { type: [playerSchema], required: true },
-});
-
 const openGameSchema = new Schema(
   {
     id: { type: Number, required: true, unique: true },
     difficulty: { type: String, required: true, unique: true },
+    difficultyNum: { type: Number, required: true },
     game: { type: gameSchema, required: true },
-    leaderboard: { type: leaderboardSchema, required: true },
+    leaderboard: { type: [playerSchema], required: true },
   },
   { collection: "openGames" }
 );
