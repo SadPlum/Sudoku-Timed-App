@@ -4,6 +4,10 @@ import { boardInterface } from "../../interfaces/gameInterface";
 
 import Cell from "./Cell";
 
+const {
+  checkComplete,
+} = require("../../functions/checkComplete/checkComplete");
+
 const Board: React.FC<boardInterface> = ({
   boardArray,
   setBoardArray,
@@ -14,7 +18,7 @@ const Board: React.FC<boardInterface> = ({
   setFullBoard,
 }) => {
   const boardRef = useRef(null);
-  const [wrongCheck, setWrongCheck] = useState<undefined | boolean>(undefined);
+  const [wrongCheck, setWrongCheck] = useState<undefined | boolean>(true);
   const [highlightedCells, setHighlightedCells] = useState<number[]>([]);
   const [activeCell, setActiveCell] = useState<number>(NaN);
 
@@ -24,6 +28,13 @@ const Board: React.FC<boardInterface> = ({
     newNum: number,
     flatPlayBoard: number[]
   ) => {
+    const gameCompleted = checkComplete(flatGameBoard, flatPlayBoard);
+    if (gameCompleted === true) {
+      // Set game to finished, stop timer, have animation, ask player name.
+    }
+    if (gameCompleted === false) {
+      // Will set message saying there is error on board
+    }
     const newFlatPlayBoard: number[] = flatPlayBoard.map((oldNum, i) =>
       i === index ? newNum : oldNum
     );
@@ -65,13 +76,13 @@ const Board: React.FC<boardInterface> = ({
 
   return (
     <div>
-      {wrongCheck === undefined && (
+      {/* {wrongCheck === undefined && (
         <div>
           {" "}
           <button onClick={() => setWrongCheck(true)}>true</button>{" "}
           <button onClick={() => setWrongCheck(false)}>False</button>{" "}
         </div>
-      )}
+      )} */}
       {wrongCheck !== undefined && flatPlayBoard && lockedPlayBoard && (
         <div className="board" ref={boardRef}>
           <div className="board-grid">
