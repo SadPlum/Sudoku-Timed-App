@@ -1,10 +1,10 @@
-interface Props {
-  setFlatPlayBoard: Function;
-  setBoardArray: Function;
-  boardArray: number[][];
-}
+import { RedoButtonInterface } from "../../interfaces/redoButtonInterface";
 
-const RedoButton = ({ setFlatPlayBoard, setBoardArray, boardArray }: Props) => {
+const RedoButton = ({
+  setFlatPlayBoard,
+  setBoardArray,
+  boardArray,
+}: RedoButtonInterface) => {
   const handleClick = () => {
     //   guard clause to keep the boardArray with at least the starting board
     if (boardArray.length <= 1) return;
