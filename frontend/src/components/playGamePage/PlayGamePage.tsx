@@ -4,28 +4,20 @@ import Board from "./Board";
 import RedoButton from "./RedoButton";
 import Title from "./Title";
 import Timer from "./Timer";
-const {
-  generateBoard,
-} = require("../../functions/generateBoard/generateBoard");
-const {
-  randomizePlayBoard,
-} = require("../../functions/randomizePlayBoard/randomizePlayBoard");
-
-interface GameData {
-  gameBoard: number[][];
-  playBoard: number[][];
-  _id: string;
-}
+import { generateBoard } from "../../functions/generateBoard/generateBoard";
+import { randomizePlayBoard } from "../../functions/randomizePlayBoard/randomizePlayBoard";
+import { GameDataInterface } from "../../interfaces/gameDataInterface";
 
 function PlayGamePage() {
   const [board, setBoard] = useState<number[][]>();
-  const [games, setGames] = useState<GameData | undefined>(undefined);
+  const [games, setGames] = useState<GameDataInterface | undefined>(undefined);
   const [flatGameBoard, setFlatGameBoard] = useState<number[]>();
   const [flatPlayBoard, setFlatPlayBoard] = useState<number[]>();
   const [lockedPlayBoard, setLockedPlayBoard] = useState<number[]>();
   const [boardArray, setBoardArray] = useState<number[][]>([]);
   const { difficulty, difficultyNums } = useParams();
   const [fullBoard, setFullBoard] = useState<boolean>(false);
+  const [timer, setTimer] = useState<boolean>(false);
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/v1/privateGames/new/${difficultyNums}`)
@@ -41,6 +33,7 @@ function PlayGamePage() {
       setFlatGameBoard(games.gameBoard.flat());
       setFlatPlayBoard(games.playBoard.flat());
       setLockedPlayBoard(games.playBoard.flat());
+      setTimer(true);
       const newArray: number[][] = [games.playBoard.flat()];
       setBoardArray(newArray);
     }
@@ -68,7 +61,7 @@ function PlayGamePage() {
         setBoardArray={setBoardArray}
         boardArray={boardArray}
       />
-      <Timer />
+      {timer && <Timer />}
     </div>
   );
 }

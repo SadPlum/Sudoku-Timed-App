@@ -6,6 +6,11 @@ import { getHighlightedCellsArray } from "../../functions/highlightedCells";
 
 import Cell from "./Cell";
 
+
+const {
+  checkComplete,
+} = require("../../functions/checkComplete/checkComplete");
+
 const Board = ({
   boardArray,
   setBoardArray,
@@ -16,7 +21,7 @@ const Board = ({
   setFullBoard,
 }: boardInterface) => {
   const boardRef = useRef(null);
-  const [wrongCheck, setWrongCheck] = useState<undefined | boolean>(undefined);
+  const [wrongCheck, setWrongCheck] = useState<undefined | boolean>(true);
   const [highlightedCells, setHighlightedCells] = useState<number[]>([]);
   const [activeCell, setActiveCell] = useState<number>(NaN);
 
@@ -26,6 +31,13 @@ const Board = ({
     newNum: number,
     flatPlayBoard: number[]
   ) => {
+    const gameCompleted = checkComplete(flatGameBoard, flatPlayBoard);
+    if (gameCompleted === true) {
+      // Set game to finished, stop timer, have animation, ask player name.
+    }
+    if (gameCompleted === false) {
+      // Will set message saying there is error on board
+    }
     const newFlatPlayBoard: number[] = flatPlayBoard.map((oldNum, i) =>
       i === index ? newNum : oldNum
     );
@@ -44,13 +56,13 @@ const Board = ({
 
   return (
     <div>
-      {wrongCheck === undefined && (
+      {/* {wrongCheck === undefined && (
         <div>
           {" "}
           <button onClick={() => setWrongCheck(true)}>true</button>{" "}
           <button onClick={() => setWrongCheck(false)}>False</button>{" "}
         </div>
-      )}
+      )} */}
       {wrongCheck !== undefined && flatPlayBoard && lockedPlayBoard && (
         <div className="board" ref={boardRef}>
           <div className="board-grid">
