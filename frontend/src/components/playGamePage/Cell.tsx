@@ -1,17 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-
-interface Props {
-  playNumber: number;
-  index: number;
-  highlighted: boolean;
-  playBoard: number[];
-  lockedNumber: number;
-  gameNumber: number;
-  changeCellNum: Function;
-  setActiveCell: Function;
-  wrongCheck?: boolean;
-  boardRef: any;
-}
+import { CellInterface } from "../../interfaces/cellInterface";
 
 function Cell({
   playNumber,
@@ -24,7 +12,7 @@ function Cell({
   playBoard,
   setActiveCell,
   boardRef,
-}: Props) {
+}: CellInterface) {
   const cellRef = useRef(null);
   // when cell is clicked and the cell isn't a cell visible by default,
   // add the "handleKeyDown event listener to add a number"
