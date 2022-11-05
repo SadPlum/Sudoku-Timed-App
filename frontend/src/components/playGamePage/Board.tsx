@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
+import { highlightedNumArray } from "../../functions/highlightedNumArray/highlightedNumArray";
 
 import { boardInterface } from "../../interfaces/boardInterface";
 
 import { getHighlightedCellsArray } from "../../functions/highlightedCells";
 
 import Cell from "./Cell";
-
 
 const {
   checkComplete,
@@ -18,7 +18,9 @@ const Board = ({
   flatGameBoard,
   setFlatPlayBoard,
   lockedPlayBoard,
+
   setFullBoard,
+
 }: boardInterface) => {
   const boardRef = useRef(null);
   const [wrongCheck, setWrongCheck] = useState<undefined | boolean>(true);
@@ -49,9 +51,11 @@ const Board = ({
   };
 
   useEffect(() => {
+
     const cellsArray: number[] = getHighlightedCellsArray(activeCell);
 
     setHighlightedCells(cellsArray);
+
   }, [activeCell]);
 
   return (
