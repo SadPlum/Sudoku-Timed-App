@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Wrongs() {
-  return (
-    <div>Wrongs</div>
-  )
+  return <div>Wrongs</div>;
 }
 
-export default Wrongs
+export default Wrongs;
