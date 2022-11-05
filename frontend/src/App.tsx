@@ -13,7 +13,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Frontpage />} />
         <Route
-          path="/gamepage/:difficulty/:difficultyNums"
+          path="/openpage/:difficulty/:difficultyNums"
+          element={<Gamepage />}
+        />
+        <Route
+          path="/privategame/:difficulty/:difficultyNums/"
           element={<Gamepage />}
         />
         <Route path="*" element={<Errorpage />} />

@@ -9,10 +9,10 @@ export const findPrivateGame = async (_id) => {
   return game;
 };
 
-export const generatePrivateGame = async () => {
+export const generatePrivateGame = async (difficulty) => {
   const _id = new mongoose.Types.ObjectId();
   const gameBoard = generateBoard();
-  const playBoard = randomizePlayBoard(gameBoard, 30);
+  const playBoard = randomizePlayBoard(gameBoard, difficulty);
   const game = { _id: _id, gameBoard: gameBoard, playBoard: playBoard };
   return game;
 };

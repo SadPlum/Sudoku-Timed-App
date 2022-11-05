@@ -10,6 +10,7 @@ const DisplayGame: React.FC<displayInterface> = ({
   image,
   scores,
   difficultyNums,
+  _id,
 }) => {
   return (
     <section className="displayGame">
@@ -20,6 +21,7 @@ const DisplayGame: React.FC<displayInterface> = ({
         <DisplayGameButtonSolo
           difficulty={difficulty}
           difficultyNums={difficultyNums}
+          _id={_id}
         />
       </div>
     </section>

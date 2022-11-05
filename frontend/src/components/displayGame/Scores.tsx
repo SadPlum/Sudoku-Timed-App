@@ -2,7 +2,7 @@ import React from "react";
 
 interface props {
   name: string;
-  time: number;
+  time: string;
 }
 
 const Scores: React.FC<props> = ({ name, time }) => {

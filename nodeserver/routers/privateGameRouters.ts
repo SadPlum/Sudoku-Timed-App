@@ -10,7 +10,7 @@ const router = express.Router();
 
 // BASE URL OF /api/v1/privategames
 
-router.get("/new", (req, res) => getBoard(req, res));
+router.get("/new/:difficultyNum", (req, res) => getBoard(req, res));
 
 router.post("/new/:gamenumber", (req, res) => {
   createNewPrivateGame(req, res);
