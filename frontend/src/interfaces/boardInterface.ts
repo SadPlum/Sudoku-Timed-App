@@ -6,4 +6,5 @@ export interface boardInterface {
   setFlatPlayBoard: Function;
   lockedPlayBoard: number[];
   setFullBoard: Function;
+  setComplete: Function;
 }

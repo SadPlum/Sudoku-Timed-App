@@ -2,14 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 import { highlightedNumArray } from "../../functions/highlightedNumArray/highlightedNumArray";
 
 import { boardInterface } from "../../interfaces/boardInterface";
+import { checkComplete } from "../../functions/checkComplete/checkComplete";
 
 import { getHighlightedCellsArray } from "../../functions/highlightedCells";
 
 import Cell from "./Cell";
-
-const {
-  checkComplete,
-} = require("../../functions/checkComplete/checkComplete");
 
 const Board = ({
   boardArray,
@@ -18,9 +15,8 @@ const Board = ({
   flatGameBoard,
   setFlatPlayBoard,
   lockedPlayBoard,
-
   setFullBoard,
-
+  setComplete,
 }: boardInterface) => {
   const boardRef = useRef(null);
   const [wrongCheck, setWrongCheck] = useState<undefined | boolean>(true);
@@ -35,6 +31,7 @@ const Board = ({
   ) => {
     const gameCompleted = checkComplete(flatGameBoard, flatPlayBoard);
     if (gameCompleted === true) {
+      setComplete(true);
       // Set game to finished, stop timer, have animation, ask player name.
     }
     if (gameCompleted === false) {
@@ -51,15 +48,12 @@ const Board = ({
   };
 
   useEffect(() => {
-
     const cellsArray: number[] = getHighlightedCellsArray(activeCell);
-
     setHighlightedCells(cellsArray);
-
   }, [activeCell]);
 
   return (
-    <div>
+    <div className="board-container">
       {/* {wrongCheck === undefined && (
         <div>
           {" "}
@@ -90,6 +84,13 @@ const Board = ({
           </div>
         </div>
       )}
+      <button
+        onClick={() => {
+          setFlatPlayBoard(flatGameBoard);
+        }}
+      >
+        Button
+      </button>
     </div>
   );
 };

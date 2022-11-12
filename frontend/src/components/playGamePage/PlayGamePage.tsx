@@ -4,9 +4,11 @@ import Board from "./Board";
 import RedoButton from "./RedoButton";
 import Title from "./Title";
 import Timer from "./Timer";
+import SaveGameModal from "./SaveGameModal";
 import { generateBoard } from "../../functions/generateBoard/generateBoard";
 import { randomizePlayBoard } from "../../functions/randomizePlayBoard/randomizePlayBoard";
 import { GameDataInterface } from "../../interfaces/gameDataInterface";
+import { TimeInterface } from "../../interfaces/timeInterface";
 
 function PlayGamePage() {
   const [board, setBoard] = useState<number[][]>();
@@ -15,9 +17,10 @@ function PlayGamePage() {
   const [flatPlayBoard, setFlatPlayBoard] = useState<number[]>();
   const [lockedPlayBoard, setLockedPlayBoard] = useState<number[]>();
   const [boardArray, setBoardArray] = useState<number[][]>([]);
-  const { difficulty, difficultyNums } = useParams();
   const [fullBoard, setFullBoard] = useState<boolean>(false);
-  const [timer, setTimer] = useState<boolean>(false);
+  const [time, setTime] = useState<TimeInterface | undefined>(undefined);
+  const [complete, setComplete] = useState<boolean>(false);
+  const { difficulty, difficultyNums } = useParams();
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/v1/privateGames/new/${difficultyNums}`)
@@ -33,35 +36,50 @@ function PlayGamePage() {
       setFlatGameBoard(games.gameBoard.flat());
       setFlatPlayBoard(games.playBoard.flat());
       setLockedPlayBoard(games.playBoard.flat());
-      setTimer(true);
       const newArray: number[][] = [games.playBoard.flat()];
       setBoardArray(newArray);
     }
   }, [games]);
 
   return (
-    <div>
-      {difficulty && <Title difficulty={difficulty} />}
+    <div className="playGamePage">
+      <div className="boardSide">
+        {difficulty && <Title difficulty={difficulty} />}
 
-      {flatPlayBoard && lockedPlayBoard && flatGameBoard && (
-        <div className="boardArea">
-          <Board
-            boardArray={boardArray}
-            setBoardArray={setBoardArray}
-            flatPlayBoard={flatPlayBoard}
-            flatGameBoard={flatGameBoard}
-            setFlatPlayBoard={setFlatPlayBoard}
-            lockedPlayBoard={lockedPlayBoard}
-            setFullBoard={setFullBoard}
+        {flatPlayBoard && lockedPlayBoard && flatGameBoard && (
+          <div className="boardArea">
+            <Board
+              boardArray={boardArray}
+              setBoardArray={setBoardArray}
+              flatPlayBoard={flatPlayBoard}
+              flatGameBoard={flatGameBoard}
+              setFlatPlayBoard={setFlatPlayBoard}
+              lockedPlayBoard={lockedPlayBoard}
+              setFullBoard={setFullBoard}
+              setComplete={setComplete}
+            />
+          </div>
+        )}
+        <RedoButton
+          setFlatPlayBoard={setFlatPlayBoard}
+          setBoardArray={setBoardArray}
+          boardArray={boardArray}
+        />
+        {games && <Timer setTime={setTime} complete={complete} />}
+      </div>
+      <div className="modalSide">
+        {" "}
+        {games && complete && time && (
+          <SaveGameModal
+            gameBoard={games.gameBoard}
+            playBoard={games.playBoard}
+            _id={games._id}
+            minutes={time.minutes}
+            seconds={time.seconds}
+            timeDisplay={time.display}
           />
-        </div>
-      )}
-      <RedoButton
-        setFlatPlayBoard={setFlatPlayBoard}
-        setBoardArray={setBoardArray}
-        boardArray={boardArray}
-      />
-      {timer && <Timer />}
+        )}
+      </div>
     </div>
   );
 }
