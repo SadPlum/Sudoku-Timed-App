@@ -1,0 +1,23 @@
+.playGamePage {
+  display: flex;
+  justify-content: center;
+}
+
+.boardSide {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 300px;
+  margin: 0px 20px;
+  justify-content: center;
+}
+
+.modalSide {
+  display: flex;
+  justify-content: center;
+}
+
+.redoBtn {
+  width: fit-content;
+  margin: auto;
+}

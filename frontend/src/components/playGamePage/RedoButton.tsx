@@ -20,7 +20,11 @@ const RedoButton = ({
     setBoardArray(tempArray);
   };
 
-  return <button onClick={handleClick}>RedoButton</button>;
+  return (
+    <button className="redoBtn" onClick={handleClick}>
+      RedoButton
+    </button>
+  );
 };
 
 export default RedoButton;
