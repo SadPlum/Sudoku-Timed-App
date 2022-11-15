@@ -2,20 +2,34 @@ import React, { useEffect, useState } from "react";
 
 interface Props {
   setName: Function;
+  setNameReady: Function;
+  nameReady: boolean;
 }
 
-function SaveGameInput({ setName }: Props) {
+function SaveGameInput({ setName, setNameReady, nameReady }: Props) {
   const [nameInput, setNameInput] = useState<string | undefined>(undefined);
 
   useEffect(() => {
-    setName(nameInput);
-  }, [nameInput]);
+    if (!nameReady) {
+      setName(nameInput);
+    }
+  }, [nameInput, nameReady]);
+
+  const handleEnter = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter" && !nameReady) {
+      setNameReady(true);
+    }
+  };
+
   return (
     <div>
       <input
+        className={"name-input"}
+        disabled={nameReady ? true : false}
         type="text"
         value={nameInput}
-        onChange={(e) => setNameInput(e.target.value)}
+        onKeyPress={(event) => handleEnter(event)}
+        onChange={(event) => setNameInput(event.target.value)}
       />
     </div>
   );

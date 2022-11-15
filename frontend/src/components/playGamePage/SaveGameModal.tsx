@@ -14,7 +14,7 @@ const SaveGameModal = ({
 }: GameDataInterface) => {
   const [makeGame, setMakeGame] = useState<boolean | undefined>(undefined);
   const [name, setName] = useState<string | undefined>(undefined);
-  const [nameReady, setNameReady] = useState<boolean | undefined>(undefined);
+  const [nameReady, setNameReady] = useState<boolean>(false);
   const [returnedURL, setReturnedURL] = useState<string | undefined>(undefined);
 
   return (
@@ -29,8 +29,14 @@ setMakeGame(false)
       {timeDisplay}
 
       {!makeGame && <SaveGameMakeGame setMakeGame={setMakeGame} />}
-      {makeGame && <SaveGameInput setName={setName} />}
-      {name && <div></div>}
+      {makeGame && (
+        <SaveGameInput
+          setNameReady={setNameReady}
+          nameReady={nameReady}
+          setName={setName}
+        />
+      )}
+      {nameReady && <div></div>}
     </div>
   );
 };
