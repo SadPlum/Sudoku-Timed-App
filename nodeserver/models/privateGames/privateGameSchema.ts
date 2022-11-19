@@ -18,18 +18,6 @@ const gameSchema = new Schema<Game>({
   gameBoard: { type: [[Number]], required: true },
 });
 
-// const playerSchema = new Schema<Player>({
-//   name: {
-//     type: String,
-//     required: true,
-//     uppercase: true,
-//     trim: true,
-//     minLength: 3,
-//     maxLength: 10,
-//   },
-//   time: { type: String, required: true, trim: true, match: /[0-9]*\:[0-9]+/ },
-// });
-
 const leaderboardSchema = new Schema({
   name: {
     type: String,
