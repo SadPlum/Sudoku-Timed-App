@@ -11,11 +11,43 @@ const SaveGameModal = ({
   minutes,
   seconds,
   timeDisplay,
+  difficulty,
 }: GameDataInterface) => {
   const [makeGame, setMakeGame] = useState<boolean | undefined>(undefined);
   const [name, setName] = useState<string | undefined>(undefined);
   const [nameReady, setNameReady] = useState<boolean>(false);
   const [returnedURL, setReturnedURL] = useState<string | undefined>(undefined);
+
+  const createNewPrivateGame = async (data: any) => {
+    const _id = data._id;
+    const response = await fetch(
+      `http://localhost:5000/api/v1/privategames/new/${_id}`,
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    return response.json();
+  };
+
+  useEffect(() => {
+    if (name && nameReady) {
+      // send API
+      const data = {
+        gameBoard: gameBoard,
+        playBoard: playBoard,
+        minutes: minutes,
+        seconds: seconds,
+        time: timeDisplay,
+        _id: _id,
+        name: name,
+        difficulty: difficulty,
+      };
+      console.log(JSON.stringify(data));
+      createNewPrivateGame(data);
+    }
+  }, [name, nameReady]);
 
   return (
     <div>

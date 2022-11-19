@@ -20,6 +20,7 @@ function App() {
           path="/privategame/:difficulty/:difficultyNums/"
           element={<Gamepage />}
         />
+        <Route path="/game/:_id/" element={<Gamepage />} />
         <Route path="*" element={<Errorpage />} />
       </Routes>
     </Router>

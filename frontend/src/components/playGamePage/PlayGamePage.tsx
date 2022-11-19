@@ -69,7 +69,7 @@ function PlayGamePage() {
       </div>
       <div className="modalSide">
         {" "}
-        {games && complete && time && (
+        {games && complete && time && difficulty && (
           <SaveGameModal
             gameBoard={games.gameBoard}
             playBoard={games.playBoard}
@@ -77,6 +77,7 @@ function PlayGamePage() {
             minutes={time.minutes}
             seconds={time.seconds}
             timeDisplay={time.display}
+            difficulty={difficulty}
           />
         )}
       </div>

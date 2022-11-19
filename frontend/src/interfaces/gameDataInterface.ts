@@ -5,4 +5,5 @@ export interface GameDataInterface {
   minutes: number;
   seconds: number;
   timeDisplay: string;
+  difficulty: string;
 }
