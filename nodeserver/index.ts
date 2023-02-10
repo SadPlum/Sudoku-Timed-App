@@ -13,6 +13,7 @@ app.use(cors());
 app.use(xss());
 // prevents noSQL injections
 app.use(mongoSanitize());
+app.use(express.json());
 
 // To easily access server for development
 app.get("/", (req, res, next) => {
