@@ -7,7 +7,11 @@ import { PrivateGameInterface } from "../../interfaces/privateGameInterface";
 
 export const getPrivateGame = async (req, res) => {
   const _id = req.params.id;
-  findPrivateGame(_id);
+  const game = await findPrivateGame(_id);
+  res.status(200).json({
+    status: "success",
+    data: game,
+  });
 };
 
 export const getBoard = async (req, res) => {
@@ -32,6 +36,10 @@ export const createNewPrivateGame = async (req, res) => {
     const data: PrivateGameInterface = req.body;
     console.log(data);
     const game = await createPrivateGame(data);
+    res.status(200).json({
+      status: "success",
+      data: game,
+    });
   } catch (err) {
     console.log(err);
   }

@@ -19,16 +19,23 @@ const SaveGameModal = ({
   const [returnedURL, setReturnedURL] = useState<string | undefined>(undefined);
 
   const createNewPrivateGame = async (data: any) => {
-    const _id = data._id;
-    const response = await fetch(
-      `http://localhost:5000/api/v1/privategames/new/${_id}`,
-      {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" },
-      }
-    );
-    return response.json();
+    try {
+      const _id = data._id;
+      const response = await fetch(
+        `http://localhost:5000/api/v1/privategames/new/${_id}`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" },
+        }
+      ).then((response) => {
+        const body = response.json();
+        console.log("body", body);
+      });
+      return response;
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {

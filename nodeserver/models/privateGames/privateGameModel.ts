@@ -7,6 +7,7 @@ import { PrivateGameInterface } from "../../interfaces/privateGameInterface";
 export const findPrivateGame = async (_id) => {
   const objectId: string = _id;
   const game = await PrivateGames.findOne({ _id: objectId }).maxTimeMS(10000);
+
   return game;
 };
 
@@ -37,7 +38,6 @@ export const createPrivateGame = async ({
   const privateGame = await PrivateGames.create({
     _id: _id,
     id: id,
-    difficulty: difficulty,
     game: game,
     leaderboard: leaderboard,
   });

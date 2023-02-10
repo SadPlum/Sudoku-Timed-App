@@ -34,7 +34,6 @@ const privateGameSchema = new Schema(
   {
     _id: { type: mongoose.Schema.Types.ObjectId, required: true, trim: true },
     id: { type: Number, required: true, unique: true },
-    difficulty: { type: String, required: true },
     game: { type: gameSchema, required: true },
     leaderboard: { type: [leaderboardSchema], required: true },
   },
