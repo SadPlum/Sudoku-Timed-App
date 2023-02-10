@@ -9,7 +9,6 @@ import { generateBoard } from "../../functions/generateBoard/generateBoard";
 import { randomizePlayBoard } from "../../functions/randomizePlayBoard/randomizePlayBoard";
 import { GameDataInterface } from "../../interfaces/gameDataInterface";
 import { TimeInterface } from "../../interfaces/timeInterface";
-import { getPrivateGame } from "../../functions/api/apiCalls";
 
 function PlayGamePage() {
   const [board, setBoard] = useState<number[][]>();
@@ -22,13 +21,17 @@ function PlayGamePage() {
   const [time, setTime] = useState<TimeInterface | undefined>(undefined);
   const [complete, setComplete] = useState<boolean>(false);
   const { difficulty, difficultyNums } = useParams();
-  const { _id } = useParams<{ _id: string | undefined }>();
 
   useEffect(() => {
-    getPrivateGame(_id).then((data) => {
-      console.log(data);
-    });
+    fetch(`http://localhost:5000/api/v1/privateGames/new/${difficultyNums}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setGames(data.data);
+      });
   }, []);
+
+  useEffect(() => {}, []);
 
   useEffect(() => {
     if (games) {

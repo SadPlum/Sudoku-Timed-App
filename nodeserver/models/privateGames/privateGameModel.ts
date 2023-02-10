@@ -6,8 +6,8 @@ import { PrivateGameInterface } from "../../interfaces/privateGameInterface";
 
 export const findPrivateGame = async (_id) => {
   const objectId: string = _id;
-  const game = await PrivateGames.findOne({ _id: objectId }).maxTimeMS(10000);
-
+  const game = await PrivateGames.findById({ _id: objectId });
+  console.log(game);
   return game;
 };
 

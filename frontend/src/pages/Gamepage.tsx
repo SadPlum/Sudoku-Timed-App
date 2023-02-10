@@ -1,11 +1,11 @@
 import React from "react";
 import Board from "../components/playGamePage/Board";
-import PlayGamePage from "../components/playGamePage/PlayGamePage";
+import PlayNewGamePage from "../components/playGamePage/PlayNewGamePage";
 
 function Gamepage() {
   return (
     <div>
-      <PlayGamePage />
+      <PlayNewGamePage />
     </div>
   );
 }

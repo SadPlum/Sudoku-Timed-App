@@ -4,6 +4,8 @@ import Heading from "./components/Heading";
 import Frontpage from "./pages/Frontpage";
 import Gamepage from "./pages/Gamepage";
 import Errorpage from "./pages/Errorpage";
+import PlayNewGamePage from "./components/playGamePage/PlayNewGamePage";
+import PlayGamePage from "./components/playGamePage/PlayGamePage";
 
 function App() {
   const [game, setGame] = useState(null);
@@ -18,9 +20,9 @@ function App() {
         />
         <Route
           path="/privategame/:difficulty/:difficultyNums/"
-          element={<Gamepage />}
+          element={<PlayNewGamePage />}
         />
-        <Route path="/game/:_id/" element={<Gamepage />} />
+        <Route path="/game/:_id/" element={<PlayGamePage />} />
         <Route path="*" element={<Errorpage />} />
       </Routes>
     </Router>
