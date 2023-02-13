@@ -10,6 +10,7 @@ import { randomizePlayBoard } from "../../functions/randomizePlayBoard/randomize
 import { GameDataInterface } from "../../interfaces/gameDataInterface";
 import { TimeInterface } from "../../interfaces/timeInterface";
 import { getPrivateGame } from "../../functions/api/apiCalls";
+import Leaderboard from "../displayGame/Leaderboard";
 
 function PlayGamePage() {
   const [board, setBoard] = useState<number[][]>();
@@ -21,16 +22,25 @@ function PlayGamePage() {
   const [fullBoard, setFullBoard] = useState<boolean>(false);
   const [time, setTime] = useState<TimeInterface | undefined>(undefined);
   const [complete, setComplete] = useState<boolean>(false);
-  const { difficulty, difficultyNums } = useParams();
+  const [leaderboard, setLeaderboard] = useState<any>();
+  const [difficulty, setDifficulty] = useState<string>();
   const { _id } = useParams<{ _id: string | undefined }>();
 
   useEffect(() => {
+    // received as JSON {
+    // status: "success" or "error",
+    // data: {object which includes game data}
+    // }
+
     getPrivateGame(_id).then((data) => {
-      console.log(data);
+      setGames(data.data.game);
+      setLeaderboard(data.data.leaderboard);
+      setDifficulty(data.data.game.difficulty);
     });
-  }, []);
+  }, [_id]);
 
   useEffect(() => {
+    console.log(games);
     if (games) {
       setFlatGameBoard(games.gameBoard.flat());
       setFlatPlayBoard(games.playBoard.flat());
@@ -80,6 +90,7 @@ function PlayGamePage() {
           />
         )}
       </div>
+      {leaderboard && <Leaderboard scores={leaderboard} />}
     </div>
   );
 }
