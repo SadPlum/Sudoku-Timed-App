@@ -32,6 +32,8 @@ const SaveGameModal = ({
         const body = response.json();
         console.log("body", body);
       });
+      const url = `http://localhost:3000/game/${_id}`;
+      setReturnedURL(url);
       return response;
     } catch (err) {
       console.log(err);
@@ -76,6 +78,7 @@ setMakeGame(false)
         />
       )}
       {nameReady && <div></div>}
+      {returnedURL && <div>{returnedURL}</div>}
     </div>
   );
 };

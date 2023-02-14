@@ -11,6 +11,7 @@ import { GameDataInterface } from "../../interfaces/gameDataInterface";
 import { TimeInterface } from "../../interfaces/timeInterface";
 import { getPrivateGame } from "../../functions/api/apiCalls";
 import Leaderboard from "../displayGame/Leaderboard";
+import UpdateGameModal from "./updateGameModal";
 
 function PlayGamePage() {
   const [board, setBoard] = useState<number[][]>();
@@ -79,7 +80,7 @@ function PlayGamePage() {
       <div className="modalSide">
         {" "}
         {games && complete && time && difficulty && (
-          <SaveGameModal
+          <UpdateGameModal
             gameBoard={games.gameBoard}
             playBoard={games.playBoard}
             _id={games._id}
