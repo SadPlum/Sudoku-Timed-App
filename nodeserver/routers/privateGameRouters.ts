@@ -3,7 +3,7 @@ import {
   getPrivateGame,
   createNewPrivateGame,
   getBoard,
-  updatePrivateGame,
+  patchPrivateGame,
 } from "../controllers/privateGames/privateGamesController";
 
 const router = express.Router();
@@ -21,7 +21,7 @@ router.get("/game/:id", (req, res) => {
 });
 
 router.patch("/game/:id", (req, res) => {
-  updatePrivateGame(req, res);
+  patchPrivateGame(req, res);
 });
 
 router.get("*", (req, res) => {

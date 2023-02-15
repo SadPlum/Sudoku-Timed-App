@@ -16,7 +16,7 @@ const DisplayGame: React.FC<displayInterface> = ({
     <section className="displayGame">
       <DifficultyBar difficulty={difficulty} />
       <GameImage difficulty={difficulty} image={image} />
-      <Leaderboard scores={scores} />
+      <Leaderboard scores={scores} shown={3} />
       <div className="buttonSection">
         <DisplayGameButtonSolo
           difficulty={difficulty}

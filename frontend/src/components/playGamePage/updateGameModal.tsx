@@ -17,26 +17,25 @@ const UpdateGameModal = ({
 
   useEffect(() => {
     if (name && nameReady) {
+      updatePrivateGame(_id, name, minutes, seconds);
     }
   }, [name, nameReady]);
 
   const updatePrivateGame = async (
-    _id: string,
+    _id: string | undefined,
     name: string,
-    minutes: string,
-    seconds: string
+    minutes: number,
+    seconds: number
   ) => {
-    const player = {
-      name: name,
-      time: `${minutes}:${seconds}`,
-    };
+    const time = `${minutes}:${seconds}`;
     try {
+      const body = { _id: _id, name: name, time: time };
       const response = await fetch(
-        `http://localhost:5000/api/v1/privategames/update/${_id}`,
+        `http://localhost:5000/api/v1/privategames/game/${_id}`,
         {
           method: "PATCH",
-          body: JSON.stringify(player),
-          headers: { "Content-Type": "applucation/json" },
+          body: JSON.stringify(body),
+          headers: { "Content-Type": "application/json" },
         }
       ).then((response) => {
         const body = response.json();

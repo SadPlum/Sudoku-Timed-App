@@ -1,7 +1,7 @@
 export interface GameDataInterface {
   gameBoard: number[][];
   playBoard: number[][];
-  _id: string;
+  _id: string | undefined;
   minutes: number;
   seconds: number;
   timeDisplay: string;

@@ -83,7 +83,7 @@ function PlayGamePage() {
           <UpdateGameModal
             gameBoard={games.gameBoard}
             playBoard={games.playBoard}
-            _id={games._id}
+            _id={_id}
             minutes={time.minutes}
             seconds={time.seconds}
             timeDisplay={time.display}
@@ -91,7 +91,7 @@ function PlayGamePage() {
           />
         )}
       </div>
-      {leaderboard && <Leaderboard scores={leaderboard} />}
+      {leaderboard && <Leaderboard scores={leaderboard} shown={10} />}
     </div>
   );
 }
