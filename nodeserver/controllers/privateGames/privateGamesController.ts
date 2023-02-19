@@ -2,6 +2,7 @@ import {
   findPrivateGame,
   generatePrivateGame,
   createPrivateGame,
+  updatePrivateGame,
 } from "../../models/privateGames/privateGameModel";
 import { PrivateGameInterface } from "../../interfaces/privateGameInterface";
 
@@ -44,4 +45,12 @@ export const createNewPrivateGame = async (req, res) => {
     console.log(err);
   }
 };
-export const updatePrivateGame = async (req, res) => {};
+export const patchPrivateGame = async (req, res) => {
+  try {
+    console.log(req.body);
+    const update = await updatePrivateGame(req.body);
+    res.status(200).json({ status: "success", data: update });
+  } catch (err) {
+    console.log(err);
+  }
+};

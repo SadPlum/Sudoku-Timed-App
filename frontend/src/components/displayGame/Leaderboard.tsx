@@ -4,12 +4,13 @@ import Scores from "./Scores";
 // Temporary interfaces to get leaderboard working.
 interface scores {
   scores: { name: string; time: string }[];
+  shown: number;
 }
 interface score {
   name: string;
   time: string;
 }
-const Leaderboard: React.FC<scores> = ({ scores }) => {
+const Leaderboard: React.FC<scores> = ({ scores, shown }) => {
   const [scoresArray, setScoresArray] = useState<score[] | undefined>(
     undefined
   );
@@ -18,9 +19,9 @@ const Leaderboard: React.FC<scores> = ({ scores }) => {
   useEffect(() => {
     console.log(scores);
     const sortedScores = scores.sort((a, b) => Number(a.time) - Number(b.time));
-    const slicedArray = sortedScores.slice(0, 3);
+    const slicedArray = sortedScores.slice(0, shown);
     setScoresArray(slicedArray);
-  }, [scores]);
+  }, [scores, shown]);
   return (
     <>
       {scoresArray && (

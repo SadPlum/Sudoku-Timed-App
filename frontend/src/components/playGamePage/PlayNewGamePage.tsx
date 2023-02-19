@@ -9,15 +9,8 @@ import { generateBoard } from "../../functions/generateBoard/generateBoard";
 import { randomizePlayBoard } from "../../functions/randomizePlayBoard/randomizePlayBoard";
 import { GameDataInterface } from "../../interfaces/gameDataInterface";
 import { TimeInterface } from "../../interfaces/timeInterface";
-import { getPrivateGame, getOpenGame } from "../../functions/api/apiCalls";
-import Leaderboard from "../displayGame/Leaderboard";
-import UpdateGameModal from "./updateGameModal";
 
-interface Props {
-  publicGame: boolean;
-}
-
-function PlayGamePage({ publicGame }: Props) {
+function PlayNewGamePage() {
   const [board, setBoard] = useState<number[][]>();
   const [games, setGames] = useState<GameDataInterface | undefined>(undefined);
   const [flatGameBoard, setFlatGameBoard] = useState<number[]>();
@@ -27,32 +20,20 @@ function PlayGamePage({ publicGame }: Props) {
   const [fullBoard, setFullBoard] = useState<boolean>(false);
   const [time, setTime] = useState<TimeInterface | undefined>(undefined);
   const [complete, setComplete] = useState<boolean>(false);
-  const [leaderboard, setLeaderboard] = useState<any>();
-  const [difficulty, setDifficulty] = useState<string>();
-  const { _id } = useParams<{ _id: string | undefined }>();
+  const { difficulty, difficultyNums } = useParams();
 
   useEffect(() => {
-    // received as JSON {
-    // status: "success" or "error",
-    // data: {object which includes game data}
-    // }
-    if (publicGame) {
-      getOpenGame(_id).then((data) => {
-        setGames(data.data.game);
-        setLeaderboard(data.data.leaderboard);
-        setDifficulty(data.data.game.difficulty);
+    fetch(`http://localhost:5000/api/v1/privateGames/new/${difficultyNums}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setGames(data.data);
       });
-    } else {
-      getPrivateGame(_id).then((data) => {
-        setGames(data.data.game);
-        setLeaderboard(data.data.leaderboard);
-        setDifficulty(data.data.game.difficulty);
-      });
-    }
-  }, [_id]);
+  }, []);
+
+  useEffect(() => {}, []);
 
   useEffect(() => {
-    console.log(games);
     if (games) {
       setFlatGameBoard(games.gameBoard.flat());
       setFlatPlayBoard(games.playBoard.flat());
@@ -91,10 +72,10 @@ function PlayGamePage({ publicGame }: Props) {
       <div className="modalSide">
         {" "}
         {games && complete && time && difficulty && (
-          <UpdateGameModal
+          <SaveGameModal
             gameBoard={games.gameBoard}
             playBoard={games.playBoard}
-            _id={_id}
+            _id={games._id}
             minutes={time.minutes}
             seconds={time.seconds}
             timeDisplay={time.display}
@@ -102,9 +83,8 @@ function PlayGamePage({ publicGame }: Props) {
           />
         )}
       </div>
-      {leaderboard && <Leaderboard scores={leaderboard} shown={10} />}
     </div>
   );
 }
 
-export default PlayGamePage;
+export default PlayNewGamePage;

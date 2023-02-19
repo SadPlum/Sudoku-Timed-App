@@ -30,6 +30,8 @@ function SaveGameInput({ setName, setNameReady, nameReady }: Props) {
         value={nameInput}
         onKeyPress={(event) => handleEnter(event)}
         onChange={(event) => setNameInput(event.target.value)}
+        maxLength={8}
+        minLength={3}
       />
     </div>
   );

@@ -12,7 +12,7 @@ const router = express.Router();
 router.get("/", (req, res) => getAllGames(req, res));
 
 // Asks controller to get open game based on the difficulty
-router.get("/:difficulty", (req, res) => getGame(req, res));
+router.get("/game/:_id", (req, res) => getGame(req, res));
 
 // Resets games each 2 weeks
 router.patch("/resetGames", (res, req) => {});
