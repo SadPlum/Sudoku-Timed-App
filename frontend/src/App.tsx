@@ -22,7 +22,14 @@ function App() {
           path="/privategame/:difficulty/:difficultyNums/"
           element={<PlayNewGamePage />}
         />
-        <Route path="/game/:_id/" element={<PlayGamePage />} />
+        <Route
+          path="/public/:_id/"
+          element={<PlayGamePage publicGame={true} />}
+        />
+        <Route
+          path="/game/:_id/"
+          element={<PlayGamePage publicGame={false} />}
+        />
         <Route path="*" element={<Errorpage />} />
       </Routes>
     </Router>

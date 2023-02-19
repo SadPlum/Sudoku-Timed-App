@@ -23,10 +23,8 @@ export const getAllGames = async (req, res) => {
 
 export const getGame = async (req, res) => {
   try {
-    // Search for games in openGames collection based on difficulty
-    // Difficulty is taken as param
-    const gameDifficulty = req.params.difficulty;
-    const game = await openGame(gameDifficulty);
+    const _id = req.params._id;
+    const game = await openGame(_id);
     // if game is returned undefined, throw error
     if (!game) {
       throw new Error("Cannot find game");

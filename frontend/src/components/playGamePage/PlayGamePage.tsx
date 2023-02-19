@@ -9,11 +9,15 @@ import { generateBoard } from "../../functions/generateBoard/generateBoard";
 import { randomizePlayBoard } from "../../functions/randomizePlayBoard/randomizePlayBoard";
 import { GameDataInterface } from "../../interfaces/gameDataInterface";
 import { TimeInterface } from "../../interfaces/timeInterface";
-import { getPrivateGame } from "../../functions/api/apiCalls";
+import { getPrivateGame, getOpenGame } from "../../functions/api/apiCalls";
 import Leaderboard from "../displayGame/Leaderboard";
 import UpdateGameModal from "./updateGameModal";
 
-function PlayGamePage() {
+interface Props {
+  publicGame: boolean;
+}
+
+function PlayGamePage({ publicGame }: Props) {
   const [board, setBoard] = useState<number[][]>();
   const [games, setGames] = useState<GameDataInterface | undefined>(undefined);
   const [flatGameBoard, setFlatGameBoard] = useState<number[]>();
@@ -32,12 +36,19 @@ function PlayGamePage() {
     // status: "success" or "error",
     // data: {object which includes game data}
     // }
-
-    getPrivateGame(_id).then((data) => {
-      setGames(data.data.game);
-      setLeaderboard(data.data.leaderboard);
-      setDifficulty(data.data.game.difficulty);
-    });
+    if (publicGame) {
+      getOpenGame(_id).then((data) => {
+        setGames(data.data.game);
+        setLeaderboard(data.data.leaderboard);
+        setDifficulty(data.data.game.difficulty);
+      });
+    } else {
+      getPrivateGame(_id).then((data) => {
+        setGames(data.data.game);
+        setLeaderboard(data.data.leaderboard);
+        setDifficulty(data.data.game.difficulty);
+      });
+    }
   }, [_id]);
 
   useEffect(() => {

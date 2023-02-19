@@ -12,16 +12,13 @@ export const allOpenGames = async () => {
   return sortedGames;
 };
 
-export const openGame = async (diff) => {
-  const difficultyString: string = diff;
-  // Ensure param is valid difficulty
-  if (difficultyArray.find((diff) => diff) === undefined) {
-    return undefined;
-  }
+export const openGame = async (_id: string) => {
+  // // Ensure param is valid difficulty
+  // if (difficultyArray.find((diff) => diff) === undefined) {
+  //   return undefined;
+  // }
   // Find one open game by difficulty string taken from req.param
-  const game = await OpenGames.findOne({ difficulty: `${diff}` }).maxTimeMS(
-    10000
-  );
+  const game = await OpenGames.findOne({ _id: _id }).maxTimeMS(10000);
   // return
   return game;
 };

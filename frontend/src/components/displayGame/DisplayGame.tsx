@@ -3,6 +3,7 @@ import DifficultyBar from "./DifficultyBar";
 import GameImage from "./GameImage";
 import Leaderboard from "./Leaderboard";
 import DisplayGameButtonSolo from "./DisplayGameButtonSolo";
+import DisplayGameButtonPublic from "./DisplayGameButtonPublic";
 import { displayInterface } from "../../interfaces/displayInterface";
 
 const DisplayGame: React.FC<displayInterface> = ({
@@ -18,6 +19,11 @@ const DisplayGame: React.FC<displayInterface> = ({
       <GameImage difficulty={difficulty} image={image} />
       <Leaderboard scores={scores} shown={3} />
       <div className="buttonSection">
+        <DisplayGameButtonPublic
+          difficulty={difficulty}
+          difficultyNums={difficultyNums}
+          _id={_id}
+        />
         <DisplayGameButtonSolo
           difficulty={difficulty}
           difficultyNums={difficultyNums}

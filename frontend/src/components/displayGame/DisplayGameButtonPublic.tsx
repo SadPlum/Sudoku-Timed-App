@@ -7,14 +7,12 @@ interface props {
   _id: string;
 }
 
-const DisplayGameButtonSolo: React.FC<props> = ({
+const DisplayGameButtonPublic: React.FC<props> = ({
   difficulty,
   difficultyNums,
   _id,
 }) => {
-  return (
-    <Link to={`/privategame/${difficulty}/${difficultyNums}`}>Play Solo</Link>
-  );
+  return <Link to={`/public/${_id}`}>Play Open</Link>;
 };
 
-export default DisplayGameButtonSolo;
+export default DisplayGameButtonPublic;

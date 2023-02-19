@@ -13,8 +13,19 @@ export const getPrivateGame = async (gameId: string | undefined) => {
     console.log("No game Id");
     return;
   }
-  const gamesData = await fetch(`${tempURI}${privateGames}/game/${gameId}`);
-  const games = await gamesData.json();
-  console.log(games);
-  return games;
+  const gameData = await fetch(`${tempURI}${privateGames}/game/${gameId}`);
+  const game = await gameData.json();
+  console.log(game);
+  return game;
+};
+
+export const getOpenGame = async (gameId: string | undefined) => {
+  if (!gameId) {
+    console.log("No game Id");
+    return;
+  }
+  const gameData = await fetch(`${tempURI}${openGames}/game/${gameId}`);
+  const game = await gameData.json();
+  console.log(game);
+  return game;
 };
