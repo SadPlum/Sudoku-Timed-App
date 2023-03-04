@@ -1,9 +1,15 @@
+.frontpage {
+  background-color: $main-background;
+}
+
 .displayGameBox-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 80%;
   margin: auto;
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
 }
 
 .displayGameBox {

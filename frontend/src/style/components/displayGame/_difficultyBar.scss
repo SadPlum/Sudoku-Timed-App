@@ -1,7 +1,11 @@
 .difficultyBar {
   width: 40%;
   margin: auto;
+  margin-bottom: 10px;
   text-align: center;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 1rem;
+  .difficulty {
+    font-weight: 300;
+  }
 }

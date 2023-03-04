@@ -1,3 +1,9 @@
+.board-container {
+  &:focus {
+    outline: none;
+  }
+}
+
 .board {
   width: 216px;
   height: 216px;
@@ -6,6 +12,13 @@
   //   flex-direction: row;
   //   flex-wrap: wrap;
   margin-left: 50px;
+  @media (min-width: 1200px) {
+    width: 432px;
+    height: 432px;
+  }
+  &:focus {
+    outline: none;
+  }
 }
 
 .board-grid {
@@ -13,4 +26,8 @@
   display: grid;
   grid-template-columns: repeat(9, 24px [col-start]);
   grid-template-rows: repeat(9, 24px [row-start]);
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(9, 48px [col-start]);
+    grid-template-rows: repeat(9, 48px [row-start]);
+  }
 }

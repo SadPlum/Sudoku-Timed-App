@@ -1,4 +1,16 @@
-.leaderboard {
-  width: 80%;
+.leaderboard-front-page {
+  width: fit-content;
   margin: auto;
+  font-weight: 300;
+  font-size: 1.2rem;
+
+  .front-page {
+    margin: 20px auto;
+  }
+}
+
+.leaderboard-game-page {
+  .game-page {
+    margin: auto;
+  }
 }

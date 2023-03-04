@@ -1,8 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,300;1,400&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap");
 * {
   margin: 0;
   padding: 0;
+}
+
+.wrapper {
+  background-color: #6ea851;
+  min-height: 100vh;
+}
+
+.frontpage {
+  background-color: #6ea851;
 }
 
 .displayGameBox-container {
@@ -17,6 +28,8 @@
           align-items: center;
   width: 80%;
   margin: auto;
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
 }
 
 .displayGameBox {
@@ -36,15 +49,19 @@
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
-  font-size: 2rem;
-  margin: 40px;
+  font-size: 2.2rem;
+  padding: 40px;
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  background-color: #6ea851;
 }
 
 .displayGame {
-  border: 1px solid black;
+  border-radius: 2px;
   width: 300px;
-  height: 300px;
   margin: auto;
+  padding: 10px 0;
+  background-color: #f5f0e5;
 }
 
 .displayGame .buttonSection {
@@ -61,9 +78,14 @@
 .difficultyBar {
   width: 40%;
   margin: auto;
+  margin-bottom: 10px;
   text-align: center;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 1rem;
+}
+
+.difficultyBar .difficulty {
+  font-weight: 300;
 }
 
 .gameImage {
@@ -78,13 +100,24 @@
   height: 150px;
 }
 
-.leaderboard {
-  width: 80%;
+.leaderboard-front-page {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.leaderboard-front-page .front-page {
+  margin: 20px auto;
+}
+
+.leaderboard-game-page .game-page {
   margin: auto;
 }
 
 .scores {
-  width: 40%;
   margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -96,6 +129,27 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  width: 200px;
+}
+
+.display-game-button {
+  border: none;
+  border-radius: 2px;
+  background: #6ea851;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.display-game-button:hover {
+  padding: 9px;
+  border: 1px solid black;
+}
+
+.display-game-button a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: black;
 }
 
 .cell {
@@ -115,12 +169,14 @@
   outline: none;
 }
 
-.cell:hover {
-  border-color: black;
+@media (min-width: 1200px) {
+  .cell {
+    font-size: 1.3rem;
+  }
 }
 
-.cell:focus {
-  border: 1px solid black;
+.cell:hover {
+  border-color: black;
 }
 
 .cell:nth-child(1n + 0):nth-child(-n + 9) {
@@ -363,7 +419,7 @@
   border-left: 1px solid black;
 }
 
-.hightlighted {
+.highlighted {
   background-color: rgba(255, 253, 253, 0.705);
 }
 
@@ -376,11 +432,30 @@
   font-weight: 500;
 }
 
+.focussed {
+  border: 1px solid black;
+}
+
+.board-container:focus {
+  outline: none;
+}
+
 .board {
   width: 216px;
   height: 216px;
   border: 1px solid black;
   margin-left: 50px;
+}
+
+@media (min-width: 1200px) {
+  .board {
+    width: 432px;
+    height: 432px;
+  }
+}
+
+.board:focus {
+  outline: none;
 }
 
 .board-grid {
@@ -393,6 +468,15 @@
       grid-template-rows: repeat(9, 24px [row-start]);
 }
 
+@media (min-width: 1200px) {
+  .board-grid {
+    -ms-grid-columns: (48px [col-start])[9];
+        grid-template-columns: repeat(9, 48px [col-start]);
+    -ms-grid-rows: (48px [row-start])[9];
+        grid-template-rows: repeat(9, 48px [row-start]);
+  }
+}
+
 .playGamePage {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -400,6 +484,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 80%;
+  margin: auto;
 }
 
 .boardSide {
@@ -416,6 +502,12 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+@media (min-width: 1200px) {
+  .boardSide {
+    width: 500px;
+  }
 }
 
 .modalSide {
