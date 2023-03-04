@@ -13,7 +13,9 @@ const DisplayGameButtonSolo: React.FC<props> = ({
   _id,
 }) => {
   return (
-    <Link to={`/privategame/${difficulty}/${difficultyNums}`}>Play Solo</Link>
+    <button className="display-game-button">
+      <Link to={`/privategame/${difficulty}/${difficultyNums}`}>Play Solo</Link>
+    </button>
   );
 };
 

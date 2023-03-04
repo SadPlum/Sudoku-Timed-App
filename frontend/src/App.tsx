@@ -11,27 +11,29 @@ function App() {
   const [game, setGame] = useState(null);
   return (
     <Router>
-      <Heading />
-      <Routes>
-        <Route path="/" element={<Frontpage />} />
-        <Route
-          path="/openpage/:difficulty/:difficultyNums"
-          element={<Gamepage />}
-        />
-        <Route
-          path="/privategame/:difficulty/:difficultyNums/"
-          element={<PlayNewGamePage />}
-        />
-        <Route
-          path="/public/:_id/"
-          element={<PlayGamePage publicGame={true} />}
-        />
-        <Route
-          path="/game/:_id/"
-          element={<PlayGamePage publicGame={false} />}
-        />
-        <Route path="*" element={<Errorpage />} />
-      </Routes>
+      <div className="wrapper">
+        <Heading />
+        <Routes>
+          <Route path="/" element={<Frontpage />} />
+          <Route
+            path="/openpage/:difficulty/:difficultyNums"
+            element={<Gamepage />}
+          />
+          <Route
+            path="/privategame/:difficulty/:difficultyNums/"
+            element={<PlayNewGamePage />}
+          />
+          <Route
+            path="/public/:_id/"
+            element={<PlayGamePage publicGame={true} />}
+          />
+          <Route
+            path="/game/:_id/"
+            element={<PlayGamePage publicGame={false} />}
+          />
+          <Route path="*" element={<Errorpage />} />
+        </Routes>
+      </div>
     </Router>
   );
 }

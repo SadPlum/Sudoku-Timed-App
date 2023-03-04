@@ -12,7 +12,11 @@ const DisplayGameButtonPublic: React.FC<props> = ({
   difficultyNums,
   _id,
 }) => {
-  return <Link to={`/public/${_id}`}>Play Open</Link>;
+  return (
+    <button className="display-game-button">
+      <Link to={`/public/${_id}`}>Play Open</Link>
+    </button>
+  );
 };
 
 export default DisplayGameButtonPublic;
