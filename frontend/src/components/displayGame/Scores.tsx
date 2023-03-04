@@ -6,10 +6,11 @@ interface props {
 }
 
 const Scores: React.FC<props> = ({ name, time }) => {
+  const newTime = time.replace(".", ":");
   return (
     <section className="scores">
       <span className="name">{name}</span>
-      <span className="time">{time}</span>
+      <span className="time">{newTime}</span>
     </section>
   );
 };

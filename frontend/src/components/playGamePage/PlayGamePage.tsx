@@ -11,7 +11,7 @@ import { GameDataInterface } from "../../interfaces/gameDataInterface";
 import { TimeInterface } from "../../interfaces/timeInterface";
 import { getPrivateGame, getOpenGame } from "../../functions/api/apiCalls";
 import Leaderboard from "../displayGame/Leaderboard";
-import UpdateGameModal from "./updateGameModal";
+import UpdateGameModal from "./UpdateGameModal";
 
 interface Props {
   publicGame: boolean;
@@ -52,7 +52,6 @@ function PlayGamePage({ publicGame }: Props) {
   }, [_id]);
 
   useEffect(() => {
-    console.log(games);
     if (games) {
       setFlatGameBoard(games.gameBoard.flat());
       setFlatPlayBoard(games.playBoard.flat());
@@ -99,6 +98,7 @@ function PlayGamePage({ publicGame }: Props) {
             seconds={time.seconds}
             timeDisplay={time.display}
             difficulty={difficulty}
+            publicGame={publicGame}
           />
         )}
       </div>

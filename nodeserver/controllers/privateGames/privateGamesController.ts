@@ -4,7 +4,7 @@ import {
   createPrivateGame,
   updatePrivateGame,
 } from "../../models/privateGames/privateGameModel";
-import { PrivateGameInterface } from "../../interfaces/privateGameInterface";
+import { GameInterface } from "../../interfaces/GameInterface";
 
 export const getPrivateGame = async (req, res) => {
   const _id = req.params.id;
@@ -34,7 +34,7 @@ export const getBoard = async (req, res) => {
 
 export const createNewPrivateGame = async (req, res) => {
   try {
-    const data: PrivateGameInterface = req.body;
+    const data: GameInterface = req.body;
     console.log(data);
     const game = await createPrivateGame(data);
     res.status(200).json({

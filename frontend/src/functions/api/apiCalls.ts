@@ -15,7 +15,7 @@ export const getPrivateGame = async (gameId: string | undefined) => {
   }
   const gameData = await fetch(`${tempURI}${privateGames}/game/${gameId}`);
   const game = await gameData.json();
-  console.log(game);
+
   return game;
 };
 
@@ -26,6 +26,6 @@ export const getOpenGame = async (gameId: string | undefined) => {
   }
   const gameData = await fetch(`${tempURI}${openGames}/game/${gameId}`);
   const game = await gameData.json();
-  console.log(game);
+
   return game;
 };
