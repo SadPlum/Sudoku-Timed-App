@@ -1,4 +1,4 @@
-export interface PrivateGameInterface {
+export interface GameInterface {
   _id: string;
   playBoard: number[][];
   gameBoard: number[][];

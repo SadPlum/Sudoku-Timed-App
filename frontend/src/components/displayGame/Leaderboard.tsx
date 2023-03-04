@@ -17,18 +17,29 @@ const Leaderboard: React.FC<scores> = ({ scores, shown }) => {
 
   // Ensure leaderboard is sorted. Then return sorted array to state
   useEffect(() => {
-    console.log(scores);
-    const sortedScores = scores.sort((a, b) => Number(a.time) - Number(b.time));
+    const sortedScores = scores.sort((a, b) => {
+      const newA = a.time.replace(".", "");
+      const newB = b.time.replace(".", "");
+
+      return Number(newA) - Number(newB);
+    });
     const slicedArray = sortedScores.slice(0, shown);
+
     setScoresArray(slicedArray);
   }, [scores, shown]);
   return (
     <>
       {scoresArray && (
-        <section className="leaderboard">
-          {scoresArray.map((score, i) => (
-            <Scores name={score.name} time={score.time} key={i} />
-          ))}
+        <section
+          className={`${
+            shown === 10 ? "leaderboard-game-page" : "leaderboard-front-page"
+          }`}
+        >
+          <div className={`${shown === 10 ? "game-page" : "front-page"}`}>
+            {scoresArray.map((score, i) => (
+              <Scores name={score.name} time={score.time} key={i} />
+            ))}
+          </div>
         </section>
       )}
     </>

@@ -9,4 +9,5 @@ export interface CellInterface {
   setActiveCell: Function;
   wrongCheck?: boolean;
   boardRef: any;
+  activeCell?: number;
 }
