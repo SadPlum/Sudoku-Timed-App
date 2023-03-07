@@ -1,16 +1,17 @@
 .display-game-button {
   border: none;
   border-radius: 2px;
-  background: $main-background;
-  padding: 10px;
+  background: $off-white;
+  padding: 8px;
   color: black;
   text-decoration: none;
 
   &:hover {
-    padding: 9px;
+    padding: 7px;
     border: 1px solid black;
   }
   a {
+    padding: 8px;
     text-decoration: none;
     font-size: 1rem;
     color: black;

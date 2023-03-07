@@ -1,7 +1,9 @@
 import {
   allOpenGames,
   openGame,
+
   updateOpenGame,
+
 } from "../../models/openGames/openGameModel";
 
 export const getAllGames = async (req, res) => {
@@ -12,6 +14,7 @@ export const getAllGames = async (req, res) => {
     if (!games) {
       throw new Error("Gannot find games");
     }
+
     res.status(200).json({
       status: "success",
       data: games,

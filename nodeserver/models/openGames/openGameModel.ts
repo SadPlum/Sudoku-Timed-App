@@ -1,6 +1,11 @@
 import { OpenGames } from "./openGameSchema";
 import { difficultyArray } from "../../utils/gameData";
+
+import { generateBoard } from "../../functions/boardFunctions/generateBoard/generateBoard";
+import { randomizePlayBoard } from "../../functions/boardFunctions/randomizePlayBoard/newRandomizePlayBoard";
+
 import { GameInterface } from "../../interfaces/GameInterface";
+
 
 export const allOpenGames = async () => {
   // Find all open games, array of 6 games
@@ -11,6 +16,17 @@ export const allOpenGames = async () => {
   });
   // return
   return sortedGames;
+};
+
+export const getGameImages = async () => {
+  const difficultyArray = [45, 40, 35, 30, 25, 20];
+  const boardArray = [];
+  difficultyArray.forEach((num) => {
+    const board = generateBoard();
+    const playBoard = randomizePlayBoard(board, num);
+    boardArray.push(playBoard);
+  });
+  return boardArray;
 };
 
 export const openGame = async (_id: string) => {
