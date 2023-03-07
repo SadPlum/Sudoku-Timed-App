@@ -6,4 +6,5 @@ export interface GameDataInterface {
   seconds: number;
   timeDisplay: string;
   difficulty: string;
+  publicGame?: boolean;
 }

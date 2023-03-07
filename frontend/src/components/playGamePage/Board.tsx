@@ -7,6 +7,7 @@ import { checkComplete } from "../../functions/checkComplete/checkComplete";
 import { getHighlightedCellsArray } from "../../functions/highlightedCells";
 
 import Cell from "./Cell";
+import e from "express";
 
 const Board = ({
   boardArray,
@@ -18,10 +19,10 @@ const Board = ({
   setFullBoard,
   setComplete,
 }: boardInterface) => {
-  const boardRef = useRef(null);
+  const boardRef = useRef<HTMLDivElement>(null);
   const [wrongCheck, setWrongCheck] = useState<undefined | boolean>(true);
   const [highlightedCells, setHighlightedCells] = useState<number[]>([]);
-  const [activeCell, setActiveCell] = useState<number>(NaN);
+  const [activeCell, setActiveCell] = useState<number>(0);
 
   // If a cell has been changed, update the play board state to update the display
   const changeCellNum = (
@@ -52,8 +53,57 @@ const Board = ({
     setHighlightedCells(cellsArray);
   }, [activeCell]);
 
+  const onKey = (code: string) => {
+    if (code.includes("Arrow")) {
+      if (code === "ArrowUp") {
+        if (activeCell - 9 < 0) {
+          setActiveCell((activeCell) => activeCell + 72);
+        } else {
+          setActiveCell((activeCell) => activeCell - 9);
+        }
+      } else if (code === "ArrowDown") {
+        if (activeCell + 9 > 80) {
+          setActiveCell((activeCell) => activeCell - 72);
+        } else {
+          setActiveCell((activeCell) => activeCell + 9);
+        }
+      } else if (code === "ArrowLeft") {
+        if (activeCell - 1 < 0) {
+          setActiveCell(80);
+        } else {
+          setActiveCell((activeCell) => activeCell - 1);
+        }
+      } else if (code === "ArrowRight") {
+        if (activeCell + 1 > 80) {
+          setActiveCell(0);
+        } else {
+          setActiveCell((activeCell) => activeCell + 1);
+        }
+      }
+    }
+    if (Number.isInteger(Number(code))) {
+      const number = Number(code);
+      changeCellNum(activeCell, number, flatPlayBoard);
+    }
+  };
+
+  useEffect(() => {
+    if (boardRef.current !== null) {
+      boardRef.current.focus();
+    }
+  }, [boardRef]);
+
   return (
-    <div className="board-container">
+    <div
+      className="board-container"
+      onKeyDown={(e) => {
+        e.preventDefault();
+        const code = e.key;
+        onKey(code);
+      }}
+      tabIndex={0}
+      ref={boardRef}
+    >
       {/* {wrongCheck === undefined && (
         <div>
           {" "}
@@ -61,8 +111,9 @@ const Board = ({
           <button onClick={() => setWrongCheck(false)}>False</button>{" "}
         </div>
       )} */}
+      {activeCell}
       {wrongCheck !== undefined && flatPlayBoard && lockedPlayBoard && (
-        <div className="board" ref={boardRef}>
+        <div className="board">
           <div className="board-grid">
             {flatPlayBoard.map((number: number, i) => {
               return (
@@ -78,6 +129,7 @@ const Board = ({
                   lockedNumber={lockedPlayBoard[i]}
                   setActiveCell={setActiveCell}
                   boardRef={boardRef}
+                  activeCell={activeCell}
                 />
               );
             })}

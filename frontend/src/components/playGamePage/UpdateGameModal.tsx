@@ -10,6 +10,7 @@ const UpdateGameModal = ({
   seconds,
   timeDisplay,
   difficulty,
+  publicGame,
 }: GameDataInterface) => {
   const [name, setName] = useState<string | undefined>(undefined);
   const [nameReady, setNameReady] = useState<boolean>(false);
@@ -17,21 +18,24 @@ const UpdateGameModal = ({
 
   useEffect(() => {
     if (name && nameReady) {
-      updatePrivateGame(_id, name, minutes, seconds);
+      updateGame(_id, name, minutes, seconds, publicGame);
     }
   }, [name, nameReady]);
 
-  const updatePrivateGame = async (
+  const updateGame = async (
     _id: string | undefined,
     name: string,
     minutes: number,
-    seconds: number
+    seconds: number,
+    publicGame?: boolean
   ) => {
-    const time = `${minutes}:${seconds}`;
+    const time = `${minutes}.${seconds}`;
+    const gameType = publicGame ? "open" : "private";
     try {
       const body = { _id: _id, name: name, time: time };
+
       const response = await fetch(
-        `http://localhost:5000/api/v1/privategames/game/${_id}`,
+        `http://localhost:5000/api/v1/${gameType}games/game/${_id}`,
         {
           method: "PATCH",
           body: JSON.stringify(body),
@@ -41,7 +45,9 @@ const UpdateGameModal = ({
         const body = response.json();
         console.log("body", body);
       });
-      const url = `http://localhost:3000/game/${_id}`;
+      const url = publicGame
+        ? `http://localhost:3000/public/${_id}`
+        : `http://localhost:3000/game/${_id}`;
       setReturnedURL(url);
       return response;
     } catch (err) {

@@ -12,6 +12,7 @@ function Cell({
   playBoard,
   setActiveCell,
   boardRef,
+  activeCell,
 }: CellInterface) {
   const cellRef = useRef(null);
   // when cell is clicked and the cell isn't a cell visible by default,
@@ -41,7 +42,15 @@ function Cell({
     <div
       ref={cellRef}
       tabIndex={index}
-      className={highlighted ? "cell hightlighted" : "cell"}
+      className={
+        highlighted
+          ? `${
+              activeCell === index
+                ? "cell highlighted focussed"
+                : "cell highlighted"
+            }`
+          : "cell"
+      }
       onClick={handleClick}
     >
       <div className={wrongCheck && playNumber !== gameNumber ? "wrong" : ""}>

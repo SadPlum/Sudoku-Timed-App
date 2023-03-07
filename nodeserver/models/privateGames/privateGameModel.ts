@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { PrivateGames } from "./privateGameSchema";
 import { generateBoard } from "../../functions/boardFunctions/generateBoard/generateBoard";
 import { randomizePlayBoard } from "../../functions/boardFunctions/randomizePlayBoard/newRandomizePlayBoard";
-import { PrivateGameInterface } from "../../interfaces/privateGameInterface";
+import { GameInterface } from "../../interfaces/GameInterface";
 
 export const findPrivateGame = async (_id) => {
   const objectId: string = _id;
@@ -24,7 +24,7 @@ export const createPrivateGame = async ({
   difficulty,
   name,
   time,
-}: PrivateGameInterface) => {
+}: GameInterface) => {
   const id = await PrivateGames.estimatedDocumentCount();
   const leaderboard = [{ name: name, time: time }];
   const game = {
@@ -43,11 +43,7 @@ export const createPrivateGame = async ({
   return privateGame;
 };
 
-export const updatePrivateGame = async ({
-  _id,
-  name,
-  time,
-}: PrivateGameInterface) => {
+export const updatePrivateGame = async ({ _id, name, time }: GameInterface) => {
   const player = [{ name: name, time: time }];
   console.log(_id, player);
   await PrivateGames.updateOne(
