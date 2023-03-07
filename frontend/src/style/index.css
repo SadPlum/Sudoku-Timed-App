@@ -8,12 +8,12 @@
 }
 
 .wrapper {
-  background-color: #6ea851;
+  background-color: #abdf91;
   min-height: 100vh;
 }
 
 .frontpage {
-  background-color: #6ea851;
+  background-color: #abdf91;
 }
 
 .displayGameBox-container {
@@ -53,7 +53,7 @@
   padding: 40px;
   font-family: "Oswald", sans-serif;
   font-weight: 500;
-  background-color: #6ea851;
+  background-color: #abdf91;
 }
 
 .displayGame {
@@ -61,7 +61,7 @@
   width: 300px;
   margin: auto;
   padding: 10px 0;
-  background-color: #f5f0e5;
+  background-color: #77a560;
 }
 
 .displayGame .buttonSection {
@@ -135,18 +135,19 @@
 .display-game-button {
   border: none;
   border-radius: 2px;
-  background: #6ea851;
-  padding: 10px;
+  background: #f5f0e5;
+  padding: 8px;
   color: black;
   text-decoration: none;
 }
 
 .display-game-button:hover {
-  padding: 9px;
+  padding: 7px;
   border: 1px solid black;
 }
 
 .display-game-button a {
+  padding: 8px;
   text-decoration: none;
   font-size: 1rem;
   color: black;
@@ -163,7 +164,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: white;
+  background-color: #f5f0e5;
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   outline: none;
@@ -441,6 +442,7 @@
 }
 
 .board {
+  background-color: #f5f0e5;
   width: 216px;
   height: 216px;
   border: 1px solid black;

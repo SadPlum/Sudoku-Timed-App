@@ -1,4 +1,8 @@
-import { allOpenGames, openGame } from "../../models/openGames/openGameModel";
+import {
+  allOpenGames,
+  openGame,
+  getGameImages,
+} from "../../models/openGames/openGameModel";
 
 export const getAllGames = async (req, res) => {
   try {
@@ -8,6 +12,7 @@ export const getAllGames = async (req, res) => {
     if (!games) {
       throw new Error("Gannot find games");
     }
+
     res.status(200).json({
       status: "success",
       data: games,
